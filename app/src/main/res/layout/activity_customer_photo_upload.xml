@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_root"
+    android:background="@color/colorPrimaryBackground"
+    tools:context=".activities.CustomerPhotoUploadActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="8dp"
+                android:text="Welcome to Sambax Finance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/colorFormBackground"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                android:layout_gravity="center"
+
+                />
+
+
+            <TextView
+                android:id="@+id/textViewSignUpShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:text="Please Upload a Photo of you."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/colorFormBackground"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                android:layout_gravity="center"
+
+                />
+
+
+            <ImageView
+                android:id="@+id/image_view_your_photo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etPassword2"
+                tools:srcCompat="@tools:sample/avatars"
+                android:background="@color/cardview_dark_background"
+                android:layout_gravity="center"
+                />
+
+            <Button
+                android:id="@+id/pickPhotoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Pick Photo"
+                app:layout_constraintEnd_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/image_view_your_photo"
+                android:layout_gravity="center"/>
+
+
+
+            <TextView
+                android:id="@+id/tvResponsePhotoUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="15dp"
+                android:lineSpacingExtra="7dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/red"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pick_national_id_button"/>
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                tools:progress="40"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvResponseSignUp"/>
+
+            <Button
+                android:id="@+id/button_upload_customer_photo"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/rounded_corner"
+                android:text="Upload"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimaryBackground"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

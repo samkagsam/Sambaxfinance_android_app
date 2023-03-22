@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryBackground"
+    tools:context=".activities.GroupStatementActivity">
+
+    <!-- ToolBar widget -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0F9D58"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title=" Sambax Finance"
+        app:titleTextColor="#ffff" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Group Statement"
+        android:id="@+id/tvGroupStatementIntroduce"
+        android:layout_below="@+id/toolbar"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorFormBackground"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/tvNoGroupStatement"
+        android:layout_below="@+id/tvGroupStatementIntroduce"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/red"
+
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvNoGroupStatement"
+        android:layout_marginTop="20dp"
+        android:id="@+id/recyclerview_show_group_statement"/>
+
+
+
+
+
+
+</RelativeLayout>

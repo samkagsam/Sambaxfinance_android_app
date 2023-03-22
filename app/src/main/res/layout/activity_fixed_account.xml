@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryBackground"
+    tools:context=".activities.FixedAccountActivity">
+
+    <!-- ToolBar widget -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0F9D58"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title=" Sambax Finance"
+        app:titleTextColor="#ffff" />
+
+
+    <TextView
+        android:id="@+id/tv_interest_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/toolbar"
+
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+
+        android:text="Invest with Us! Get 15% interest per annum on your Savings"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorFormBackground" />
+
+    <TextView
+        android:id="@+id/tv_get_started"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/tv_interest_show"
+
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+
+        android:text="Let's Get Started!"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorFormBackground" />
+
+
+
+
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_send_to_create_fda"
+        android:layout_below="@id/tv_get_started"
+        android:layout_marginTop="20dp"
+        android:text="Create Fixed Deposit Account"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_corner"
+        android:textColor="@color/colorPrimaryBackground"
+        />
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_how_fda_works"
+        android:layout_below="@id/button_send_to_create_fda"
+        android:layout_marginTop="20dp"
+        android:text="How Fixed Deposit Account Works"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_corner"
+        android:textColor="@color/colorPrimaryBackground"
+        />
+
+
+</RelativeLayout>

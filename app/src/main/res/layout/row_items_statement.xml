@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    app:cardElevation="8dp"
+    android:layout_margin="8dp"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="250dp"
+                android:src="@mipmap/ic_launcher"
+                android:id="@+id/image_movie"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="8dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/transaction_amount"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:textSize="20sp"
+                    android:text="Amount:"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/from_amount_statememt"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:textSize="20sp"
+                    android:text="From:"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/to_amount_statement"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:textSize="20sp"
+                    android:text="To:"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/transaction_type"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:textSize="20sp"
+                    android:text="Transaction Type:"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/made_by_statement"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:textSize="20sp"
+                    android:text="Made by:"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/transaction_created_at"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:textSize="20sp"
+                    android:text="Created AT:"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

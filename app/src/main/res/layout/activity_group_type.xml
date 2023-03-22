@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryBackground"
+    tools:context=".activities.GroupTypeActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ToolBar widget -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0F9D58"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title=" Sambax Finance "
+                app:titleTextColor="#ffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Saving Groups"
+                android:textColor="@color/colorFormBackground"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are two types of saving groups you can create or belong to:\n - Weekly Saving Groups \n -Long Term Saving Groups(Attract 15% interest per annum on savings)"
+                android:textColor="@color/colorFormBackground"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/btn_weekly_saving_groups"
+                    android:text="Weekly Saving Groups"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/rounded_corner"
+                    android:textColor="@color/colorPrimaryBackground"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/tvShowWeeklyGroupNotifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_shape"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="0dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/btn_long_term_saving_groups"
+                    android:text="Long Term Saving Groups"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/rounded_corner"
+                    android:textColor="@color/colorPrimaryBackground"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/tvShowLongTermGroupNotifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+
+                    android:background="@drawable/circle_shape"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="0dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+
+                    />
+
+            </LinearLayout>
+
+
+
+
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:id="@+id/btnHowGroupSavingsWork"
+
+                android:layout_marginTop="20dp"
+                android:text="How Saving Groups Work"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/rounded_corner"
+                android:textColor="@color/colorPrimaryBackground"
+                android:layout_gravity="center"/>
+
+
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
