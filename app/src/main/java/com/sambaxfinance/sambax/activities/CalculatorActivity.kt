@@ -51,8 +51,10 @@ class CalculatorActivity : AppCompatActivity() {
 
             }
 
-            val interest_rate = 0.0045
-            val processing_fee = 60 * loan_period
+            val interest_rate = 0.00167
+            val push_charge = 1000
+            val communication_fee = 60 * loan_period
+            val processing_fee = push_charge + communication_fee
             val interest = loan_inquiry * interest_rate * loan_period
             val loan_payable = loan_inquiry + interest + processing_fee
             val loan_payable_string = loan_payable.toString()

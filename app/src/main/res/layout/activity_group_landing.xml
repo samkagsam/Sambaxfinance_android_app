@@ -33,7 +33,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Weekly Saving Groups:"
+                android:text="Rotating Saving Groups(ROSCAs):"
                 android:textColor="@color/colorFormBackground"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:layout_gravity="center"
@@ -45,7 +45,7 @@
                 android:id="@+id/btnCreateGroup"
 
                 android:layout_marginTop="30dp"
-                android:text="Create Saving Group"
+                android:text="Create Group"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/rounded_corner"
                 android:textColor="@color/colorPrimaryBackground"
@@ -57,7 +57,7 @@
                 android:id="@+id/btn_my_weekly_groups"
 
                 android:layout_marginTop="15dp"
-                android:text="My Weekly Groups"
+                android:text="My Groups"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/rounded_corner"
                 android:textColor="@color/colorPrimaryBackground"

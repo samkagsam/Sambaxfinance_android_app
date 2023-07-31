@@ -36,7 +36,8 @@ class MyAdapterUserGroups(val context: Context, val group_list: List<GeneralGrou
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.group_id.text = "Group: " + group_list[position].id.toString()
+        //holder.group_id.text = "Group: " + group_list[position].id.toString()
+        holder.group_id.text = "" + group_list[position].group_name
 
         val group_credentials = group_list[position]
         /*holder.itemView.setOnClickListener {

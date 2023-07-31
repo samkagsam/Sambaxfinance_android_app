@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryBackground"
+    tools:context=".activities.ChangeWeeklyMemberContributionActivity">
+
+    <!-- ToolBar widget -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0F9D58"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title=" Sambax Finance"
+        app:titleTextColor="#ffff" />
+
+    <TextView
+        android:id="@+id/tv_show_change_weekly_group_contribution_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:lineSpacingExtra="7dp"
+        android:text="N.B: Only Group Admin can change the weekly member contribution at the start of a new cycle"
+        android:textAlignment="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorFormBackground"
+        android:layout_below="@+id/toolbar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_show_to_be_wc"
+        android:layout_below="@+id/tv_show_change_weekly_group_contribution_note"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="15dp"
+        android:text="Enter the amount of money you want each member to save per week in your Saving Group"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorFormBackground" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutSaveMoney"
+        android:layout_below="@+id/tv_show_to_be_wc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/rounded_corner"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+
+        <EditText
+            android:id="@+id/et_new_weekly_member_contribution"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:drawablePadding="5dp"
+            android:hint="Enter amount "
+            android:inputType="number" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCWGCResponse"
+            android:textColor="@color/red"/>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_change_weekly_contribution"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/rounded_corner"
+        android:text="Change Contribution"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryBackground" />
+
+</RelativeLayout>

@@ -34,7 +34,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
 
-        android:text="Weekly Saving Groups"
+        android:text="Rotating Saving Groups(ROSCAs)"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
         android:textColor="@color/colorFormBackground" />
 

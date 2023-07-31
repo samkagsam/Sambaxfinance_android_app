@@ -35,7 +35,7 @@
         android:layout_marginTop="16dp"
 
 
-        android:text="Long Term Saving Groups"
+        android:text="Accumulating Saving Groups(ASCAs)"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
         android:textColor="@color/colorFormBackground" />
 

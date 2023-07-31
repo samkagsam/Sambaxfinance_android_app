@@ -45,6 +45,10 @@ class GroupActivity : AppCompatActivity() {
         val buttonGroupStatement = findViewById<Button>(R.id.buttonGroupStatement)
         val buttonSeeGroupMembers = findViewById<Button>(R.id.buttonSeeGroupMembers)
         val buttonAddGroupMembers = findViewById<Button>(R.id.buttonAddGroupMembers)
+        val button_change_group_name = findViewById<Button>(R.id.button_change_group_name)
+        val button_go_to_remove_weekly_group_member = findViewById<Button>(R.id.button_go_to_remove_weekly_group_member)
+        val button_go_to_change_member_contribution = findViewById<Button>(R.id.button_go_to_change_member_contribution)
+        val button_see_total_member_contributions = findViewById<Button>(R.id.button_see_total_member_contributions)
 
 
 
@@ -97,8 +101,8 @@ class GroupActivity : AppCompatActivity() {
                     } else{
                         val responseBody = response.body()!!
                         // Capture the layout's TextView and set the string as its text
-                        val tvGroupNo = findViewById<TextView>(R.id.tvGroupNo).apply {
-                            text = "Group No: "+ response.body()?.usergroup
+                        val tvShowWeeklyGroupName = findViewById<TextView>(R.id.tvShowWeeklyGroupName).apply {
+                            text = ""+ response.body()?.group_name
                         }
 
                         // Capture the layout's TextView and set the string as its text
@@ -115,6 +119,14 @@ class GroupActivity : AppCompatActivity() {
                         val tvCurrentCycle = findViewById<TextView>(R.id.tvCurrentCycle).apply {
                             text = "Current Cycle: "+ response.body()?.current_cycle
                         }
+                        val tvWeeklyContribution = findViewById<TextView>(R.id.tvWeeklyContribution).apply {
+                            text = "Weekly Member Contribution: "+ response.body()?.weekly_contribution
+                        }
+
+                        val tv_weekly_group_admin = findViewById<TextView>(R.id.tv_weekly_group_admin).apply {
+                            text = "Group Admin: "+ response.body()?.group_admin
+                        }
+
                         val tvCurrentBeneficiary = findViewById<TextView>(R.id.tvCurrentBeneficiary).apply {
                             text = "This week's beneficiary is: "+ response.body()?.week_beneficiary
                         }
@@ -248,6 +260,38 @@ class GroupActivity : AppCompatActivity() {
         buttonAddGroupMembers.setOnClickListener {
             //start a new activity here
             val intent = Intent(this@GroupActivity, AddGroupMembersActivity::class.java).apply {
+                putExtra(EXTRA_MESSAGE, token)
+                putExtra(EXTRA_MESSAGE_GROUP, group_number)
+            }
+            startActivity(intent)
+        }
+        button_change_group_name.setOnClickListener {
+            //start a new activity here
+            val intent = Intent(this@GroupActivity, ChangeWeeklyGroupNameActivity::class.java).apply {
+                putExtra(EXTRA_MESSAGE, token)
+                putExtra(EXTRA_MESSAGE_GROUP, group_number)
+            }
+            startActivity(intent)
+        }
+        button_go_to_remove_weekly_group_member.setOnClickListener {
+            //start a new activity here
+            val intent = Intent(this@GroupActivity, RemoveWeeklyGroupMemberActivity::class.java).apply {
+                putExtra(EXTRA_MESSAGE, token)
+                putExtra(EXTRA_MESSAGE_GROUP, group_number)
+            }
+            startActivity(intent)
+        }
+        button_go_to_change_member_contribution.setOnClickListener {
+            //start a new activity here
+            val intent = Intent(this@GroupActivity, ChangeWeeklyMemberContributionActivity::class.java).apply {
+                putExtra(EXTRA_MESSAGE, token)
+                putExtra(EXTRA_MESSAGE_GROUP, group_number)
+            }
+            startActivity(intent)
+        }
+        button_see_total_member_contributions.setOnClickListener {
+            //start a new activity here
+            val intent = Intent(this@GroupActivity, TotalRoscaMemberContributionActivity::class.java).apply {
                 putExtra(EXTRA_MESSAGE, token)
                 putExtra(EXTRA_MESSAGE_GROUP, group_number)
             }

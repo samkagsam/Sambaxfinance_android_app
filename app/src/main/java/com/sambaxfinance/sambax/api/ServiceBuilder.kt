@@ -3,9 +3,14 @@ package com.sambaxfinance.sambax.api
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 object ServiceBuilder {
-    private val client = OkHttpClient.Builder().build()
+    private val client = OkHttpClient.Builder()
+        .connectTimeout(180,TimeUnit.SECONDS)
+        .writeTimeout(180,TimeUnit.SECONDS)
+        .readTimeout(180,TimeUnit.SECONDS)
+        .build()
 
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://sambax-api.herokuapp.com/") // change this IP for testing by your actual machine IP

@@ -13,6 +13,7 @@ import com.sambaxfinance.sambax.R
 import com.sambaxfinance.sambax.api.ApiInterfaceCreateLongTermGroup
 import com.sambaxfinance.sambax.api.ApiInterfaceFDACreate
 import com.sambaxfinance.sambax.api.ServiceBuilder
+import com.sambaxfinance.sambax.models.CreateLongTermGroupRequestModel
 import com.sambaxfinance.sambax.models.FDACreateRequestModel
 import com.sambaxfinance.sambax.models.FDACreateResponseModel
 import retrofit2.Call
@@ -41,10 +42,12 @@ class CreateLongTermGroupActivity : AppCompatActivity() {
         //introduce variables from layout
         val buttonCreateLTG = findViewById<Button>(R.id.buttonCreateLTG)
         val payout_months_given = findViewById<EditText>(R.id.et_ltg_months)
+        val group_name_given = findViewById<EditText>(R.id.et_enter_ltg_name)
 
 
         buttonCreateLTG.setOnClickListener {
             val payout_months = payout_months_given.text.toString().toIntOrNull() ?: 0
+            val group_name_to_use = group_name_given.text.toString().trim()
 
 
             if (payout_months == 0) {
@@ -54,14 +57,21 @@ class CreateLongTermGroupActivity : AppCompatActivity() {
 
             }
 
+            if(group_name_to_use.isEmpty()){
+                group_name_given.error = "group name is required"
+                group_name_given.requestFocus()
+                return@setOnClickListener
+
+            }
+
             println(token)
             println(payout_months)
 
             //val transactionRequestModel = TransactionRequestModel(deposit_money)
-            val fdaCreateRequestModel = FDACreateRequestModel(payout_months)
+            val createLongTermGroupRequestModel = CreateLongTermGroupRequestModel(payout_months, group_name_to_use)
 
             val response = ServiceBuilder.buildService(ApiInterfaceCreateLongTermGroup::class.java)
-            response.sendReq(fdaCreateRequestModel, "Bearer " + token).enqueue(
+            response.sendReq(createLongTermGroupRequestModel, "Bearer " + token).enqueue(
                 object : Callback<FDACreateResponseModel> {
                     override fun onResponse(
                         call: Call<FDACreateResponseModel>,

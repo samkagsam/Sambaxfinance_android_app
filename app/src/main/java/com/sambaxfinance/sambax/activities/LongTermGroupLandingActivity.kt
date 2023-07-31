@@ -40,9 +40,16 @@ class LongTermGroupLandingActivity : AppCompatActivity() {
         val buttonSeeGroupMembers = findViewById<Button>(R.id.buttonSeeLongTermGroupMembers)
         val buttonAddGroupMembers = findViewById<Button>(R.id.buttonAddLongTermGroupMembers)
         val button_see_my_personal_statement = findViewById<Button>(R.id.button_see_my_personal_statement)
-        val button_see_my_total_deposits = findViewById<Button>(R.id.button_see_my_total_deposits)
-        val button_see_ltg_interest = findViewById<Button>(R.id.button_see_ltg_interest)
+        //val button_see_my_total_deposits = findViewById<Button>(R.id.button_see_my_total_deposits)
+        //val button_see_ltg_interest = findViewById<Button>(R.id.button_see_ltg_interest)
         val button_set_new_ltg_payout_date = findViewById<Button>(R.id.button_set_new_ltg_payout_date)
+        val button_get_quick_loan_from_ltg = findViewById<Button>(R.id.button_get_quick_loan_from_ltg)
+        val button_change_ltg_name = findViewById<Button>(R.id.button_change_ltg_name)
+        val button_pay_ltg_loan = findViewById<Button>(R.id.button_pay_ltg_loan)
+        val button_ltg_members_with_loans = findViewById<Button>(R.id.button_ltg_members_with_loans)
+        val button_go_to_remove_ltg_member = findViewById<Button>(R.id.button_go_to_remove_ltg_member)
+        val button_go_to_change_ltg_interest_rate = findViewById<Button>(R.id.button_go_to_change_ltg_interest_rate)
+
 
 
 
@@ -97,8 +104,12 @@ class LongTermGroupLandingActivity : AppCompatActivity() {
                     } else{
                         val responseBody = response.body()!!
                         // Capture the layout's TextView and set the string as its text
-                        val tvGroupNo = findViewById<TextView>(R.id.tvLongTermGroupNo).apply {
-                            text = "Group No: "+ response.body()?.usergroup
+                        val tvGroupName = findViewById<TextView>(R.id.tvGroupDetails).apply {
+                            text = ""+ response.body()?.group_name
+                        }
+
+                        val tvCurrentCycle = findViewById<TextView>(R.id.tvLongTermGroupCurrentCycle).apply {
+                            text = "Current Cycle: "+ response.body()?.current_cycle
                         }
 
                         // Capture the layout's TextView and set the string as its text
@@ -106,8 +117,33 @@ class LongTermGroupLandingActivity : AppCompatActivity() {
                             text = "Group Account Balance: "+ response.body()?.group_account_balance
                         }
 
-                        val tvCurrentCycle = findViewById<TextView>(R.id.tvLongTermGroupCurrentCycle).apply {
-                            text = "Current Cycle: "+ response.body()?.current_cycle
+                        // Capture the layout's TextView and set the string as its text
+                        val tv_personal_stake_in_ltg = findViewById<TextView>(R.id.tv_personal_stake_in_ltg).apply {
+                            text = "Personal Stake: "+ response.body()?.personal_stake
+                        }
+
+                        // Capture the layout's TextView and set the string as its text
+                        val tv_ltg_loans = findViewById<TextView>(R.id.tv_ltg_loans).apply {
+                            text = "Group Loans: "+ response.body()?.group_loans
+                        }
+
+                        // Capture the layout's TextView and set the string as its text
+                        val tv_ltg_profit = findViewById<TextView>(R.id.tv_ltg_profit).apply {
+                            text = "Group Profit: "+ response.body()?.group_profit
+                        }
+
+                        // Capture the layout's TextView and set the string as its text
+                        val tv_ltg_loan_balance = findViewById<TextView>(R.id.tv_ltg_loan_balance).apply {
+                            text = "Loan Balance: "+ response.body()?.loan_balance
+                        }
+                        // Capture the layout's TextView and set the string as its text
+                        val tv_ltg_loan_interest_rate = findViewById<TextView>(R.id.tv_ltg_loan_interest_rate).apply {
+                            text = "Loan Interest Rate: "+ response.body()?.interest_rate
+                        }
+
+                        // Capture the layout's TextView and set the string as its text
+                        val tv_ltg_group_admin = findViewById<TextView>(R.id.tv_ltg_group_admin).apply {
+                            text = "Group Admin:"+ response.body()?.group_admin
                         }
 
                         // Capture the layout's TextView and set the string as its text
@@ -259,25 +295,64 @@ class LongTermGroupLandingActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-        button_see_my_total_deposits.setOnClickListener {
-            //start a new activity here
-            val intent = Intent(this@LongTermGroupLandingActivity, MyTotalGroupDepositsActivity::class.java).apply {
-                putExtra(EXTRA_MESSAGE, token)
-                putExtra(EXTRA_MESSAGE_GROUP, group_number)
-            }
-            startActivity(intent)
-        }
-        button_see_ltg_interest.setOnClickListener {
-            //start a new activity here
-            val intent = Intent(this@LongTermGroupLandingActivity, MyInterestInLongTermGroupActivity::class.java).apply {
-                putExtra(EXTRA_MESSAGE, token)
-                putExtra(EXTRA_MESSAGE_GROUP, group_number)
-            }
-            startActivity(intent)
-        }
+
         button_set_new_ltg_payout_date.setOnClickListener {
             //start a new activity here
             val intent = Intent(this@LongTermGroupLandingActivity, LongTermGroupSetPayoutDateActivity::class.java).apply {
+                putExtra(EXTRA_MESSAGE, token)
+                putExtra(EXTRA_MESSAGE_GROUP, group_number)
+            }
+            startActivity(intent)
+        }
+
+        button_get_quick_loan_from_ltg.setOnClickListener {
+            //start a new activity here
+            val intent = Intent(this@LongTermGroupLandingActivity, LoanEligibilityActivityLtg::class.java).apply {
+                putExtra(EXTRA_MESSAGE, token)
+                putExtra(EXTRA_MESSAGE_GROUP, group_number)
+            }
+            startActivity(intent)
+        }
+
+        button_change_ltg_name.setOnClickListener {
+            //start a new activity here
+            val intent = Intent(this@LongTermGroupLandingActivity, ChangeLtgNameActivity::class.java).apply {
+                putExtra(EXTRA_MESSAGE, token)
+                putExtra(EXTRA_MESSAGE_GROUP, group_number)
+            }
+            startActivity(intent)
+        }
+
+        button_pay_ltg_loan.setOnClickListener {
+            //start a new activity here
+            val intent = Intent(this@LongTermGroupLandingActivity, PayLtgLoanActivity::class.java).apply {
+                putExtra(EXTRA_MESSAGE, token)
+                putExtra(EXTRA_MESSAGE_GROUP, group_number)
+            }
+            startActivity(intent)
+        }
+
+        button_ltg_members_with_loans.setOnClickListener {
+            //start a new activity here
+            val intent = Intent(this@LongTermGroupLandingActivity, LtgMembersWithLoansActivity::class.java).apply {
+                putExtra(EXTRA_MESSAGE, token)
+                putExtra(EXTRA_MESSAGE_GROUP, group_number)
+            }
+            startActivity(intent)
+        }
+
+        button_go_to_remove_ltg_member.setOnClickListener {
+            //start a new activity here
+            val intent = Intent(this@LongTermGroupLandingActivity, RemoveLtgMemberActivity::class.java).apply {
+                putExtra(EXTRA_MESSAGE, token)
+                putExtra(EXTRA_MESSAGE_GROUP, group_number)
+            }
+            startActivity(intent)
+        }
+
+        button_go_to_change_ltg_interest_rate.setOnClickListener {
+            //start a new activity here
+            val intent = Intent(this@LongTermGroupLandingActivity, ChangeLtgInterestActivity::class.java).apply {
                 putExtra(EXTRA_MESSAGE, token)
                 putExtra(EXTRA_MESSAGE_GROUP, group_number)
             }

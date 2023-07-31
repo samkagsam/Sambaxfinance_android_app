@@ -9,6 +9,6 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiInterfaceLongTermGroupLanding {
-    @POST("specific_long_term_saving_group_landing")
+    @POST("new_specific_long_term_saving_group_landing")
     fun sendReq(@Body groupLandingRequestModel: GroupLandingRequestModel, @Header("Authorization")  authorization:String) : Call<LongTermGroupLandingResponseModel>
 }

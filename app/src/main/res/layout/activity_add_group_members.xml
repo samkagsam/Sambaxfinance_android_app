@@ -22,9 +22,22 @@
         app:titleTextColor="#ffff" />
 
     <TextView
+        android:id="@+id/tv_show_add_weekly_group_member_note"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="15dp"
+        android:lineSpacingExtra="7dp"
+        android:text="N.B: Only Group Admin can add another member, at the start of a new cycle."
+        android:textAlignment="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorFormBackground"
+        android:layout_below="@+id/toolbar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_show_to_be_wgm"
+        android:layout_below="@+id/tv_show_add_weekly_group_member_note"
         android:layout_marginStart="46dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="56dp"
@@ -35,9 +48,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
+        android:layout_below="@+id/tv_show_to_be_wgm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/rounded_corner"

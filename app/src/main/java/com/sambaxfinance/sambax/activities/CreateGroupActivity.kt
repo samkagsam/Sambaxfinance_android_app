@@ -46,10 +46,12 @@ class CreateGroupActivity : AppCompatActivity() {
         //introduce variables from layout
         val buttonCreateSavingGroup = findViewById<Button>(R.id.buttonCreateSavingGroup)
         val payout_money_given = findViewById<EditText>(R.id.etGroupPayoutAmount)
+        val group_name_given = findViewById<EditText>(R.id.et_enter_group_name)
 
 
         buttonCreateSavingGroup.setOnClickListener {
             val payout_money = payout_money_given.text.toString().toIntOrNull() ?: 0
+            val group_name_to_use = group_name_given.text.toString().trim()
 
 
             if (payout_money == 0) {
@@ -59,11 +61,18 @@ class CreateGroupActivity : AppCompatActivity() {
 
             }
 
+            if(group_name_to_use.isEmpty()){
+                group_name_given.error = "group name is required"
+                group_name_given.requestFocus()
+                return@setOnClickListener
+
+            }
+
             println(token)
             println(payout_money)
 
             //val transactionRequestModel = TransactionRequestModel(deposit_money)
-            val groupCreateRequestModel = GroupCreateRequestModel(payout_money)
+            val groupCreateRequestModel = GroupCreateRequestModel(group_name_to_use, payout_money)
 
             val response = ServiceBuilder.buildService(ApiInterfaceGroupCreate::class.java)
             response.sendReq(groupCreateRequestModel, "Bearer " + token).enqueue(

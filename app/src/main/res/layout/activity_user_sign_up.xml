@@ -50,21 +50,7 @@
 
                 />
 
-            <TextView
-                android:id="@+id/textViewNB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="8dp"
-                android:text="N.B: Please make sure you have a photo of you and a picture of your national ID saved on your phone before you start this process."
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:textColor="@color/colorFormBackground"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-                android:layout_gravity="center"
 
-                />
 
             <LinearLayout
                 android:id="@+id/linearLayout"

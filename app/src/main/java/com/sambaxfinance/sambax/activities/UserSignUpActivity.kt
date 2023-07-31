@@ -93,14 +93,71 @@ class UserSignUpActivity : AppCompatActivity() {
 
             }
 
-            //startActivity(intent)
-            val intent = Intent(this@UserSignUpActivity, CustomerPhotoUploadActivity::class.java).apply {
-                putExtra(FIRST_NAME_ASSIGN, first_name_fresh)
-                putExtra(LAST_NAME_ASSIGN, last_name_fresh)
-                putExtra(PASSWORD_ASSIGN, password_fresh)
-                putExtra(PHONE_NUMBER_ASSIGN, phone_number_fresh.toString())
-            }
-            startActivity(intent)
+            //DummyModel
+            val requestModel = RequestModel(phone_number_fresh, password_fresh,first_name_fresh,last_name_fresh,
+                "google_refused", "google_refused")
+
+            val response = ServiceBuilder.buildService(ApiInterface::class.java)
+            response.sendReq(requestModel).enqueue(
+                object : Callback<ResponseModel> {
+                    override fun onResponse(
+                        call: Call<ResponseModel>,
+                        response: Response<ResponseModel>
+                    ) {
+                        Toast.makeText(this@UserSignUpActivity,response.message().toString(),Toast.LENGTH_LONG).show()
+                        println("we were successful")
+                        //println(response.message().toString())
+                        //println(response.body().toString())
+                        //println(response.body()?.access_token)
+                        //println(response.body()?.token_type)
+
+                        //val signtoken = response.body()?.access_token
+                        val signtoken = response.body()?.access_token
+
+                        val okResponse = response.message().toString()
+                        if (okResponse == "Created"){
+                            println("hello")
+
+                            //let us first clear the error field
+                            // Capture the layout's TextView and set the string as its text
+
+                            //startActivity(intent)
+                            val intent = Intent(this@UserSignUpActivity, OtpActivity::class.java).apply {
+                                putExtra(EXTRA_MESSAGE2, signtoken)
+
+                            }
+                            startActivity(intent)
+
+
+                        }else{
+                            println("no hello")
+                            //show rejection in textview, refocus user to renter credentials
+                            // Capture the layout's TextView and set the string as its text
+                            val tvResponseSignUp = findViewById<TextView>(R.id.tvResponseSignUp).apply {
+                                text = "Signup rejected.Cause:you are already a user"
+                            }
+
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
+                        Toast.makeText(this@UserSignUpActivity,t.toString(),Toast.LENGTH_LONG).show()
+                        println("we failed")
+                        //println(t.toString())
+                        // Capture the layout's TextView and set the string as its text
+                        val tvResponseSignUp = findViewById<TextView>(R.id.tvResponseSignUp).apply {
+                            text = "please check your internet connection"
+                        }
+
+
+
+                    }
+
+                }
+            )
+
+
+
 
 
 

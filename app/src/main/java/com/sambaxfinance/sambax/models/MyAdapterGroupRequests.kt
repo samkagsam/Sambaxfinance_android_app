@@ -39,7 +39,7 @@ class MyAdapterGroupRequests(val context: Context, val request_list: List<GroupR
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.group_no.text = "Group: " + request_list[position].group_number.toString()
+        holder.group_no.text = "" + request_list[position].group_name
         holder.group_admin.text = "Admin: " + request_list[position].admin_first_name + " " + request_list[position].admin_last_name
         holder.admin_phone_number.text = "Phone Number: " + request_list[position].admin_phone_number
 

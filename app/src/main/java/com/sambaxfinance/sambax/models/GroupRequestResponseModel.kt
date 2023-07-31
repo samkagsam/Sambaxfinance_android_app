@@ -5,5 +5,6 @@ data class GroupRequestResponseModel(
     val group_number: String,
     val admin_first_name: String,
     val admin_last_name: String,
-    val admin_phone_number:String
+    val admin_phone_number:String,
+    val group_name:String
 )

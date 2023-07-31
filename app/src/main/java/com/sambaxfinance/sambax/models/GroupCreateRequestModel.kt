@@ -1,5 +1,7 @@
 package com.sambaxfinance.sambax.models
 
 data class GroupCreateRequestModel(
-    val payout: Int
+
+    val group_name: String,
+    val contribution: Int
 )

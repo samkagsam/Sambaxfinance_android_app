@@ -21,20 +21,60 @@
         app:title=" Sambax Finance"
         app:titleTextColor="#ffff" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/tvInstructGroupName"
+        android:layout_below="@id/toolbar"
+
+
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="15dp"
+        android:text="Name Your Group"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorFormBackground" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutNameGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvInstructGroupName"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/rounded_corner"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+
+        <EditText
+            android:id="@+id/et_enter_group_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:drawablePadding="5dp"
+            android:hint="Enter the name of your group"
+            android:inputType="textPersonName" />
+
+
+    </LinearLayout>
+
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="142dp"
+        android:layout_below="@id/linearLayoutNameGroup"
+        android:id="@+id/tv_enter_amount_to_save_weekly"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="15dp"
-        android:text="Enter the amount you want your group to save per week"
+        android:text="Enter the amount you want each group member to save per week"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
         android:textColor="@color/colorFormBackground" />
 
@@ -42,9 +82,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutGroupCreate"
+        android:layout_below="@id/tv_enter_amount_to_save_weekly"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/rounded_corner"
@@ -81,7 +122,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="7dp"
-        android:text="This is the amount of money that is given to one group member per week"
+        android:text="This is the amount of money that each group member is mandated to save per week"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorFormBackground" />

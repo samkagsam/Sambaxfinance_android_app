@@ -33,19 +33,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Long Term Saving Groups:"
+                android:text="Accumulating Saving Groups(ASCAs):"
                 android:textColor="@color/colorFormBackground"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="(You get 15% interest per annum on Your Group Savings)"
-                android:textColor="@color/colorFormBackground"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"/>
+
 
             <Button
                 android:layout_width="200dp"
@@ -53,7 +46,7 @@
                 android:id="@+id/btn_go_to_create_LTG"
 
                 android:layout_marginTop="30dp"
-                android:text="Create Long Term Group"
+                android:text="Create Group"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/rounded_corner"
                 android:textColor="@color/colorPrimaryBackground"
@@ -65,7 +58,7 @@
                 android:id="@+id/btn_my_long_term_groups"
 
                 android:layout_marginTop="20dp"
-                android:text="My Long Term Groups"
+                android:text="My Groups"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/rounded_corner"
                 android:textColor="@color/colorPrimaryBackground"

@@ -37,8 +37,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Saving Group"
-                    android:id="@+id/tvGroupDetails"
+                    android:text=""
+                    android:id="@+id/tvShowWeeklyGroupName"
                     android:layout_below="@+id/toolbar"
                     android:gravity="center"
                     android:layout_marginTop="5dp"
@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:id="@+id/groupLinearLayout"
-                    android:layout_below="@+id/tvGroupDetails"
+                    android:layout_below="@+id/tvShowWeeklyGroupName"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
@@ -66,15 +66,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/tvGroupNo"
-                        android:textColor="@color/black"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"/>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -111,6 +103,27 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvWeeklyContribution"
+                        android:textColor="@color/black"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_weekly_group_admin"
+                        android:textColor="@color/black"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"/>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -312,6 +325,148 @@
                             android:layout_height="match_parent"
                             android:orientation="vertical"
                             android:background="@color/colorPrimaryBackground">
+
+                            <Button
+                                android:layout_width="150dp"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="5dp"
+                                android:text="Change Group Name"
+                                android:id="@+id/button_change_group_name"
+                                android:layout_gravity="center"
+                                android:background="@drawable/rounded_corner"
+                                android:textColor="@color/colorPrimaryBackground"
+                                />
+
+
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linearLayout3"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorPrimaryBackground"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_weight="1"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:background="@color/colorPrimaryBackground">
+
+                            <Button
+                                android:layout_width="150dp"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="5dp"
+                                android:text="Remove Group Member"
+                                android:id="@+id/button_go_to_remove_weekly_group_member"
+                                android:layout_gravity="center"
+                                android:background="@drawable/rounded_corner"
+                                android:textColor="@color/colorPrimaryBackground"
+                                />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:background="@color/colorPrimaryBackground">
+
+                            <Button
+                                android:layout_width="150dp"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="5dp"
+                                android:text=" Total Member Payments"
+                                android:id="@+id/button_see_total_member_contributions"
+                                android:layout_gravity="center"
+                                android:background="@drawable/rounded_corner"
+                                android:textColor="@color/colorPrimaryBackground"
+                                />
+
+
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linearLayout4"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorPrimaryBackground"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_weight="1"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:background="@color/colorPrimaryBackground">
+
+                            <Button
+                                android:layout_width="150dp"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="5dp"
+                                android:text="Change Member Contribution"
+                                android:id="@+id/button_go_to_change_member_contribution"
+                                android:layout_gravity="center"
+                                android:background="@drawable/rounded_corner"
+                                android:textColor="@color/colorPrimaryBackground"
+                                />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:background="@color/colorPrimaryBackground">
+
+
 
 
 

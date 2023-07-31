@@ -18,6 +18,39 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.ChangeLtgInterestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.RemoveLtgMemberActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.PayLtgLoanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.TotalRoscaMemberContributionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ChangeWeeklyMemberContributionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.RemoveWeeklyGroupMemberActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.LtgMembersWithLoansActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ChangeLtgNameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ChangeWeeklyGroupNameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.LtgLoanIssueActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.LoanEligibilityActivityLtg"
+            android:exported="false" />
+        <activity
             android:name=".activities.CustomerIdUploadActivity"
             android:exported="false" />
         <activity
