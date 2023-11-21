@@ -48,7 +48,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Interest Rate on Your Savings: 15% per annum"
+                    android:text="Interest Rate on Your Savings: 18% per annum"
                     android:id="@+id/tv_interest_rate_details"
                     android:layout_below="@+id/tvFDAdetails"
                     android:gravity="center"
@@ -160,7 +160,7 @@
                                 android:text="Withdraw"
                                 android:id="@+id/button_fd_withdraw"
                                 android:layout_gravity="center"
-                                android:background="@drawable/rounded_corner"
+                                android:background="@drawable/custom_button"
                                 android:textColor="@color/colorPrimaryBackground"
                                 />
 
@@ -288,6 +288,17 @@
                             android:layout_height="match_parent"
                             android:orientation="vertical"
                             android:background="@color/colorPrimaryBackground">
+
+                            <Button
+                                android:layout_width="150dp"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="5dp"
+                                android:text="Get Quick Loan"
+                                android:id="@+id/button_go_to_fda_quick_loan_note"
+                                android:layout_gravity="center"
+                                android:background="@drawable/rounded_corner"
+                                android:textColor="@color/colorPrimaryBackground"
+                                />
 
 
 

@@ -3,6 +3,7 @@ package com.sambaxfinance.sambax.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -18,6 +19,12 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LongTermGroupLandingActivity : AppCompatActivity() {
+
+    private var isButtonEnabled = true // Variable to track button state
+    private val handler = Handler()
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_long_term_group_landing)
@@ -71,10 +78,6 @@ class LongTermGroupLandingActivity : AppCompatActivity() {
             group_number = group_identity_2!!
         }
 
-
-        //val group_identity_2_str = group_identity_2.toString()
-        //println(group_credentials?.id)
-        //println(group_identity_str)
 
         val groupLandingRequestModel = GroupLandingRequestModel(group_number.toInt())
         val response = ServiceBuilder.buildService(ApiInterfaceLongTermGroupLanding::class.java)
@@ -185,14 +188,19 @@ class LongTermGroupLandingActivity : AppCompatActivity() {
             startActivity(intent)
         }
         buttonGroupWithdraw.setOnClickListener {
-            /*
-            //start a new activity here
-            val intent = Intent(this@GroupActivity, GroupWithdrawActivity::class.java).apply {
-                putExtra(EXTRA_MESSAGE, token)
-                putExtra(EXTRA_MESSAGE_GROUP, group_number)
+            if (!isButtonEnabled) {
+                return@setOnClickListener // Prevent double-clicking
             }
-            startActivity(intent)
-            */
+
+            // Disable the button
+            isButtonEnabled = false
+            buttonGroupWithdraw .isEnabled = false
+
+            // Enable the button after 30 seconds
+            handler.postDelayed({
+                isButtonEnabled = true
+                buttonGroupWithdraw.isEnabled = true
+            }, 30000) // 30 seconds in milliseconds
 
             val groupWithdrawRequestModel = GroupWithdrawRequestModel(group_number.toInt())
 
@@ -205,22 +213,13 @@ class LongTermGroupLandingActivity : AppCompatActivity() {
                     ) {
                         Toast.makeText(this@LongTermGroupLandingActivity,response.message().toString(), Toast.LENGTH_LONG).show()
                         //println("we were successful")
-                        //println(response.message().toString())
-                        //println(response.body().toString())
-                        //println(response.body()?.first_name)
-                        //println(response.body()?.account_balance)
-                        //println(response.body()?.loan_balance)
-                        //val logintoken = response.body()?.access_token
+
                         val okResponse = response.message().toString()
                         println(okResponse)
 
                         if (okResponse == "Created"){
                             println("hello")
-                            //clear error field
-                            /*// Capture the layout's TextView and set the string as its text
-                            val tvresponse = findViewById<TextView>(R.id.tvGroupWithdrawPositiveResponse).apply {
-                                text = "You have successfully withdrawn your weekly payout"
-                            }*/
+
                             //start a new activity here
                             val intent = Intent(this@LongTermGroupLandingActivity, LongTermGroupLandingActivity::class.java).apply {
                                 putExtra(EXTRA_MESSAGE, token)
@@ -230,17 +229,7 @@ class LongTermGroupLandingActivity : AppCompatActivity() {
 
                         }else{
                             println("no hello")
-                            //show rejection in textview, refocus user to renter credentials
-                            // Capture the layout's TextView and set the string as its text
-                            //val wrongCredentialsMessage = "Wrong phone number or password"
-                            // Capture the layout's TextView and set the string as its text
-                            /*val tvResponse = findViewById<TextView>(R.id.tvGroupWithdrawNegativeResponse).apply {
-                                text = "Withdrawal not allowed"
-                            }
 
-                            //return@setOnClickListener
-                            Toast.makeText(this@GroupWithdrawActivity,"Withdrawal not allowed",Toast.LENGTH_LONG).show()
-                            */
                             //start a new activity here
                             val intent = Intent(this@LongTermGroupLandingActivity, LongTermGroupWithdrawActivity::class.java).apply {
                                 putExtra(EXTRA_MESSAGE, token)

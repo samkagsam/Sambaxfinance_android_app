@@ -51,11 +51,7 @@ class GroupWithdrawActivity : AppCompatActivity() {
                     Toast.makeText(this@GroupWithdrawActivity,response.message().toString(), Toast.LENGTH_LONG).show()
                     //println("we were successful")
                     //println(response.message().toString())
-                    //println(response.body().toString())
-                    //println(response.body()?.first_name)
-                    //println(response.body()?.account_balance)
-                    //println(response.body()?.loan_balance)
-                    //val logintoken = response.body()?.access_token
+
                     val okResponse = response.message().toString()
                     println(okResponse)
 
@@ -75,17 +71,7 @@ class GroupWithdrawActivity : AppCompatActivity() {
 
                     }else{
                         println("no hello")
-                        //show rejection in textview, refocus user to renter credentials
-                        // Capture the layout's TextView and set the string as its text
-                        //val wrongCredentialsMessage = "Wrong phone number or password"
-                        // Capture the layout's TextView and set the string as its text
-                        /*val tvResponse = findViewById<TextView>(R.id.tvGroupWithdrawNegativeResponse).apply {
-                            text = "Withdrawal not allowed"
-                        }
 
-                        //return@setOnClickListener
-                        Toast.makeText(this@GroupWithdrawActivity,"Withdrawal not allowed",Toast.LENGTH_LONG).show()
-                        */
                         //start a new activity here
                         val intent = Intent(this@GroupWithdrawActivity, FeedBackActivity::class.java).apply {
                             putExtra(EXTRA_MESSAGE, token)

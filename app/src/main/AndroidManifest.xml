@@ -18,6 +18,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.FdaLoanNoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.FdaQuickLoanActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.ChangeLtgInterestActivity"
             android:exported="false" />
         <activity

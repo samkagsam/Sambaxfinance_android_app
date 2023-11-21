@@ -3,6 +3,7 @@ package com.sambaxfinance.sambax.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -21,8 +22,8 @@ import retrofit2.Response
 const val EXTRA_MESSAGE_GROUP = "com.example.sambax.Groupid"
 class GroupActivity : AppCompatActivity() {
 
-
-
+    private var isButtonEnabled = true // Variable to track button state
+    private val handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,12 +84,7 @@ class GroupActivity : AppCompatActivity() {
                 ) {
                     Toast.makeText(this@GroupActivity,response.message().toString(), Toast.LENGTH_LONG).show()
                     //println("we were successful")
-                    //println(response.message().toString())
-                    //println(response.body().toString())
-                    //println(response.body()?.first_name)
-                    //println(response.body()?.account_balance)
-                    //println(response.body()?.loan_balance)
-                    //val logintoken = response.body()?.access_token
+
                     val okResponse = response.message().toString()
                     println(okResponse)
 
@@ -157,8 +153,7 @@ class GroupActivity : AppCompatActivity() {
                 putExtra(EXTRA_MESSAGE, token)
                 putExtra(EXTRA_MESSAGE_GROUP, group_number)
 
-                //putExtra(EXTRA_MESSAGE_GROUP, group_identity_str)
-                //putExtra(EXTRA_MESSAGE_GROUP, group_identity_2)
+
             }
             startActivity(intent)
         }
@@ -171,6 +166,20 @@ class GroupActivity : AppCompatActivity() {
             }
             startActivity(intent)
             */
+            if (!isButtonEnabled) {
+                return@setOnClickListener // Prevent double-clicking
+            }
+
+            // Disable the button
+            isButtonEnabled = false
+            buttonGroupWithdraw .isEnabled = false
+
+            // Enable the button after 30 seconds
+            handler.postDelayed({
+                isButtonEnabled = true
+                buttonGroupWithdraw .isEnabled = true
+            }, 30000) // 30 seconds in milliseconds
+
 
             val groupWithdrawRequestModel = GroupWithdrawRequestModel(group_number.toInt())
 
@@ -183,12 +192,7 @@ class GroupActivity : AppCompatActivity() {
                     ) {
                         Toast.makeText(this@GroupActivity,response.message().toString(), Toast.LENGTH_LONG).show()
                         //println("we were successful")
-                        //println(response.message().toString())
-                        //println(response.body().toString())
-                        //println(response.body()?.first_name)
-                        //println(response.body()?.account_balance)
-                        //println(response.body()?.loan_balance)
-                        //val logintoken = response.body()?.access_token
+
                         val okResponse = response.message().toString()
                         println(okResponse)
 

@@ -3,6 +3,7 @@ package com.sambaxfinance.sambax.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -21,6 +22,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class FixedAccountLandingActivity : AppCompatActivity() {
+
+    private var isButtonEnabled = true // Variable to track button state
+    private val handler = Handler()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fixed_account_landing)
@@ -45,6 +51,7 @@ class FixedAccountLandingActivity : AppCompatActivity() {
         val button_fd_statement = findViewById<Button>(R.id.button_fd_statement)
         val button_set_fd_payout = findViewById<Button>(R.id.button_set_fd_payout)
         val button_see_fda_interest = findViewById<Button>(R.id.button_see_fda_interest)
+        val button_go_to_fda_quick_loan_note = findViewById<Button>(R.id.button_go_to_fda_quick_loan_note)
 
 
         val response = ServiceBuilder.buildService(ApiInterfaceFixedAccountLanding::class.java)
@@ -56,12 +63,7 @@ class FixedAccountLandingActivity : AppCompatActivity() {
                 ) {
                     Toast.makeText(this@FixedAccountLandingActivity,response.message().toString(), Toast.LENGTH_LONG).show()
                     //println("we were successful")
-                    //println(response.message().toString())
-                    //println(response.body().toString())
-                    //println(response.body()?.first_name)
-                    //println(response.body()?.account_balance)
-                    //println(response.body()?.loan_balance)
-                    //val logintoken = response.body()?.access_token
+
                     val okResponse = response.message().toString()
                     println(okResponse)
 
@@ -109,6 +111,22 @@ class FixedAccountLandingActivity : AppCompatActivity() {
             startActivity(intent)
         }
         button_fd_withdraw.setOnClickListener {
+
+            if (!isButtonEnabled) {
+                return@setOnClickListener // Prevent double-clicking
+            }
+
+            // Disable the button
+            isButtonEnabled = false
+            button_fd_withdraw.isEnabled = false
+
+            // Enable the button after 30 seconds
+            handler.postDelayed({
+                isButtonEnabled = true
+                button_fd_withdraw.isEnabled = true
+            }, 30000) // 30 seconds in milliseconds
+
+
             //do the withdraw here
             val response = ServiceBuilder.buildService(ApiInterfaceFixedAccountWithdraw::class.java)
             response.sendReq("Bearer " + token).enqueue(
@@ -145,6 +163,8 @@ class FixedAccountLandingActivity : AppCompatActivity() {
                             }
                             startActivity(intent)
                         }
+
+
                     }
 
                     override fun onFailure(call: Call<FixedAccountWithdrawResponseModel>, t: Throwable) {
@@ -153,6 +173,8 @@ class FixedAccountLandingActivity : AppCompatActivity() {
                         Toast.makeText(this@FixedAccountLandingActivity,"Please check your internet connection", Toast.LENGTH_LONG).show()
                         println("we failed")
                         println(t.toString())
+
+
 
                     }
 
@@ -179,6 +201,13 @@ class FixedAccountLandingActivity : AppCompatActivity() {
         button_see_fda_interest.setOnClickListener {
             //start a new activity here
             val intent = Intent(this@FixedAccountLandingActivity, FixedAccountInterestActivity::class.java).apply {
+                putExtra(EXTRA_MESSAGE, token)
+            }
+            startActivity(intent)
+        }
+        button_go_to_fda_quick_loan_note.setOnClickListener {
+            //start a new activity here
+            val intent = Intent(this@FixedAccountLandingActivity, FdaLoanNoteActivity::class.java).apply {
                 putExtra(EXTRA_MESSAGE, token)
             }
             startActivity(intent)

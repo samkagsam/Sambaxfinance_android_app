@@ -34,7 +34,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="10dp"
 
-        android:text="Invest with Us! Get 15% interest per annum on your Savings"
+        android:text="Invest with Us! Get 18% interest per annum on your Savings"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
         android:textColor="@color/colorFormBackground" />
 

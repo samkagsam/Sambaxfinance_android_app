@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/drawable/account_circle.xml" value="0.1045" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/drawable/circle_shape.xml" value="0.1045" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/drawable/custom_button.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/drawable/disabled_button.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/drawable/rounded_corner.xml" value="0.1935" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_about.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_add_group_members.xml" value="0.18" />
@@ -22,13 +24,15 @@
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_customer_id_upload.xml" value="0.1859375" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_customer_photo_upload.xml" value="0.2" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_disapprove_request.xml" value="0.16" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fda_loan_note.xml" value="0.25" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fda_quick_loan.xml" value="0.2" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_feed_back.xml" value="0.18" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fixed_account.xml" value="0.22" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fixed_account.xml" value="0.25" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fixed_account_about.xml" value="0.16510416666666666" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fixed_account_create.xml" value="0.10191082802547771" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fixed_account_deposit.xml" value="0.10666666666666667" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fixed_account_interest.xml" value="0.21" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fixed_account_landing.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fixed_account_create.xml" value="0.18" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fixed_account_deposit.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fixed_account_interest.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fixed_account_landing.xml" value="0.22" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fixed_account_set_payout_date.xml" value="0.1095890410958904" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fixed_account_statement.xml" value="0.1044776119402985" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_fixed_account_withdraw.xml" value="0.19" />
@@ -47,14 +51,14 @@
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_loan_eligibility_ltg.xml" value="0.25" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_long_term_group_deposit.xml" value="0.12" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_long_term_group_general_statement.xml" value="0.12273550724637682" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_long_term_group_landing.xml" value="0.18" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_long_term_group_landing.xml" value="0.22" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_long_term_group_members.xml" value="0.12273550724637682" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_long_term_group_requests.xml" value="0.12273550724637682" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_long_term_group_set_payout_date.xml" value="0.10666666666666667" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_long_term_group_withdraw.xml" value="0.12273550724637682" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_long_term_saving_groups.xml" value="0.22" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_long_term_saving_groups_general.xml" value="0.21" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_ltg_loan_issue.xml" value="0.25" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_ltg_loan_issue.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_ltg_members_with_loans.xml" value="0.12545289855072464" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_main.xml" value="0.12" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_my_interest_in_long_term_group.xml" value="0.2" />
@@ -76,10 +80,10 @@
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_statement.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_terms.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_total_rosca_member_contribution.xml" value="0.12545289855072464" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_transfer.xml" value="0.18" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_transfer.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_user_guide.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_user_sign_up.xml" value="0.12315270935960591" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_withdraw.xml" value="0.25" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/activity_withdraw.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/menu.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/row_items.xml" value="0.16983695652173914" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Sambax/app/src/main/res/layout/row_items_group_members.xml" value="0.10695187165775401" />

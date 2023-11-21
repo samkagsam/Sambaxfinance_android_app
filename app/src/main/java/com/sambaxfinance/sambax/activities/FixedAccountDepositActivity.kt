@@ -3,6 +3,7 @@ package com.sambaxfinance.sambax.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -22,6 +23,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class FixedAccountDepositActivity : AppCompatActivity() {
+
+    private var isButtonEnabled = true // Variable to track button state
+    private val handler = Handler()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fixed_account_deposit)
@@ -46,6 +51,20 @@ class FixedAccountDepositActivity : AppCompatActivity() {
 
 
         buttonSaveMoney.setOnClickListener {
+            if (!isButtonEnabled) {
+                return@setOnClickListener // Prevent double-clicking
+            }
+
+            // Disable the button
+            isButtonEnabled = false
+            buttonSaveMoney.isEnabled = false
+
+            // Enable the button after 30 seconds
+            handler.postDelayed({
+                isButtonEnabled = true
+                buttonSaveMoney.isEnabled = true
+            }, 30000) // 30 seconds in milliseconds
+
             val deposit_money = deposit_money_given.text.toString().toIntOrNull() ?: 0
 
             if(deposit_money == 0){

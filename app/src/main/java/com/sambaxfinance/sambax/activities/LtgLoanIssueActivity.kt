@@ -20,8 +20,14 @@ import com.sambaxfinance.sambax.models.LtgQuickLoanEligibilityResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.os.Handler
+import android.os.Looper
 
 class LtgLoanIssueActivity : AppCompatActivity() {
+
+    private var isButtonEnabled = true // Variable to track button state
+    private val handler = Handler()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ltg_loan_issue)
@@ -99,6 +105,21 @@ class LtgLoanIssueActivity : AppCompatActivity() {
         )
 
         button_take_ltg_loan.setOnClickListener {
+
+            if (!isButtonEnabled) {
+                return@setOnClickListener // Prevent double-clicking
+            }
+
+            // Disable the button
+            isButtonEnabled = false
+            button_take_ltg_loan.isEnabled = false
+
+            // Enable the button after 30 seconds
+            handler.postDelayed({
+                isButtonEnabled = true
+                button_take_ltg_loan.isEnabled = true
+            }, 30000) // 30 seconds in milliseconds
+
             println("wololo")
             println(group_identity)
 

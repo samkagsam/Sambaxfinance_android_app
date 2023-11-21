@@ -18,4 +18,8 @@
     <color name="unknown1">#F5B215</color>
     <color name="unknown2">#0F9D58</color>
     <color name="unknown3">#A55D35</color>
+
+    <color name="button_enabled_color">#e4e4e4</color>
+    <color name="button_disabled_color">#D12828</color>
+
 </resources>

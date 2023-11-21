@@ -47,56 +47,7 @@ class LoanEligibilityActivityLtg : AppCompatActivity() {
         //introduce variables from layout
         val button_proceed_to_get_quick_loan = findViewById<Button>(R.id.button_proceed_to_get_quick_loan)
 
-        val groupWithdrawRequestModel = GroupWithdrawRequestModel(group_identity_int)
 
-        val response = ServiceBuilder.buildService(ApiInterfaceLtgQuickLoanEligibility::class.java)
-        response.sendReq(groupWithdrawRequestModel,"Bearer " + token).enqueue(
-            object : Callback<LtgQuickLoanEligibilityResponseModel> {
-                override fun onResponse(
-                    call: Call<LtgQuickLoanEligibilityResponseModel>,
-                    response: Response<LtgQuickLoanEligibilityResponseModel>
-                ) {
-                    Toast.makeText(this@LoanEligibilityActivityLtg,response.message().toString(), Toast.LENGTH_LONG).show()
-                    println("we were successful")
-                    println(response.message().toString())
-                    println(response.body().toString())
-
-
-                    val okResponse = response.message().toString()
-                    println(okResponse)
-
-                    if (okResponse == "OK"){
-                        println("hello")
-                        //let us first clear all error codes
-                        // Capture the layout's TextView and set the string as its text
-                        val tvSaveResponse = findViewById<TextView>(R.id.tvShowLoanEligibility).apply {
-                            text = "UgX "+ response.body()?.maximum_eligible_loan
-                        }
-
-
-                    }else{
-                        println("no hello")
-                        //show rejection in textview, refocus user to renter credentials
-                        Toast.makeText(this@LoanEligibilityActivityLtg,"Error in processing request", Toast.LENGTH_LONG).show()
-                        // Capture the layout's TextView and set the string as its text
-                        val tvSaveResponse = findViewById<TextView>(R.id.tvNoEligibility).apply {
-                            text = "There was an error in processing your request"
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<LtgQuickLoanEligibilityResponseModel>, t: Throwable) {
-                    Toast.makeText(this@LoanEligibilityActivityLtg,t.toString(), Toast.LENGTH_LONG).show()
-                    println("we failed")
-                    println(t.toString())
-                    //show error in error field
-                    val tvSaveResponse = findViewById<TextView>(R.id.tvNoEligibility).apply {
-                        text = "Please check your internet connection"
-                    }
-                }
-
-            }
-        )
 
         button_proceed_to_get_quick_loan.setOnClickListener {
             println("wololo")

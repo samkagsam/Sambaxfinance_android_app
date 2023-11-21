@@ -17,8 +17,14 @@ import com.sambaxfinance.sambax.models.PaymentResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.os.Handler
 
 class PayLoanActivity : AppCompatActivity() {
+
+    private var isButtonEnabled = true // Variable to track button state
+    private val handler = Handler()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pay_loan)
@@ -42,6 +48,22 @@ class PayLoanActivity : AppCompatActivity() {
         val payment_money_given = findViewById<EditText>(R.id.etPayLoan)
 
         buttonPayLoan.setOnClickListener {
+
+            if (!isButtonEnabled) {
+                return@setOnClickListener // Prevent double-clicking
+            }
+
+            // Disable the button
+            isButtonEnabled = false
+            buttonPayLoan.isEnabled = false
+
+            // Enable the button after 30 seconds
+            handler.postDelayed({
+                isButtonEnabled = true
+                buttonPayLoan.isEnabled = true
+            }, 30000) // 30 seconds in milliseconds
+
+
             val payment_money = payment_money_given.text.toString().toIntOrNull() ?: 0
 
             if(payment_money == 0){

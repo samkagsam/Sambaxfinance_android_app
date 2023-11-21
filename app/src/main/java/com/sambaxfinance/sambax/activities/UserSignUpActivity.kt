@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.sambaxfinance.sambax.R
@@ -32,7 +33,8 @@ const val PHONE_NUMBER_ASSIGN = "com.sambax.sambax.phone_number_assign"
 
 class UserSignUpActivity : AppCompatActivity() {
 
-
+    private var isButtonEnabled = true // Variable to track button state
+    private val handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,11 +52,19 @@ class UserSignUpActivity : AppCompatActivity() {
         //val tvLogin = findViewById<TextView>(R.id.tvLogin)
 
         buttonSignUp.setOnClickListener {
-            //let us deactivate the signup button
-            //it.isClickable = false     // to disable clicking on button
-            //it.isEnabled = false       // to disable button
+            if (!isButtonEnabled) {
+                return@setOnClickListener // Prevent double-clicking
+            }
+
+            // Disable the button
+            isButtonEnabled = false
             buttonSignUp.isEnabled = false
-            buttonSignUp.isClickable = false
+
+            // Enable the button after 30 seconds
+            handler.postDelayed({
+                isButtonEnabled = true
+                buttonSignUp.isEnabled = true
+            }, 30000) // 30 seconds in milliseconds
 
 
             //let us get the form variables

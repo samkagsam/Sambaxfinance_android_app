@@ -17,8 +17,14 @@ import com.sambaxfinance.sambax.models.TransactionRequestModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.os.Handler
 
 class WithdrawActivity : AppCompatActivity() {
+
+    private var isButtonEnabled = true // Variable to track button state
+    private val handler = Handler() // Initialize the Handler
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_withdraw)
@@ -43,12 +49,31 @@ class WithdrawActivity : AppCompatActivity() {
 
 
         buttonWithdrawMoney.setOnClickListener {
+
+            if (!isButtonEnabled) {
+                return@setOnClickListener // Prevent double-clicking
+            }
+
+            // Disable the button
+            isButtonEnabled = false
+            buttonWithdrawMoney.isEnabled = false
+
+            // Enable the button after 30 seconds
+            handler.postDelayed({
+                isButtonEnabled = true
+                buttonWithdrawMoney.isEnabled = true
+            }, 30000) // 30 seconds in milliseconds
+
+            println("button now disabled")
+
+
             val withdraw_money = withdraw_money_given.text.toString().toIntOrNull() ?: 0
 
             if(withdraw_money == 0){
                 withdraw_money_given.error = "Amount to withdraw is required"
                 withdraw_money_given.requestFocus()
                 return@setOnClickListener
+
 
             }
             println(token)
@@ -84,6 +109,9 @@ class WithdrawActivity : AppCompatActivity() {
                                 putExtra(EXTRA_MESSAGE, token)
                             }
                             startActivity(intent)
+
+
+
                         }else{
                             println("no hello")
                             //show rejection in textview, refocus user to renter credentials
@@ -92,6 +120,9 @@ class WithdrawActivity : AppCompatActivity() {
                             val tvWithdrawResponse = findViewById<TextView>(R.id.tvWithdrawResponse).apply {
                                 text = "There was an error in processing your withdraw request"
                             }
+
+
+
                         }
                     }
 
@@ -103,6 +134,9 @@ class WithdrawActivity : AppCompatActivity() {
                         val tvWithdrawResponse = findViewById<TextView>(R.id.tvWithdrawResponse).apply {
                             text = "Please check your internet connection"
                         }
+
+
+
                     }
 
                 }

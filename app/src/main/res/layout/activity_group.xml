@@ -197,7 +197,7 @@
                                 android:text="Withdraw"
                                 android:id="@+id/buttonGroupWithdraw"
                                 android:layout_gravity="center"
-                                android:background="@drawable/rounded_corner"
+                                android:background="@drawable/custom_button"
                                 android:textColor="@color/colorPrimaryBackground"
                                 />
 

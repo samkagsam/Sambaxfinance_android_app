@@ -31,43 +31,19 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
 
-        android:text="N.B: This Quick Loan is issued by this group from its savings. Profits go to this group, of which you will share as a member. Interest rate is 5% a month.You must have some savings in the group to qualify for this quick loan."
+        android:text="N.B: This Quick Loan is issued by this group from its savings. Profits go to this group, of which you will share as a member. Interest rate depends on the group.You must have some savings in the group to qualify for this quick loan."
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
         android:textColor="@color/colorFormBackground" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvIntroduceLoanEligibility"
-        android:gravity="center"
-        android:layout_below="@+id/tvNoteQuickLoan"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="15dp"
-        android:text="Dear member, you are currently eligible to get a quick loan up to a maximum of :"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-        android:textColor="@color/colorFormBackground" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvShowLoanEligibility"
-        android:gravity="center"
-        android:layout_below="@+id/tvIntroduceLoanEligibility"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="15dp"
-        android:text=""
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-        android:textColor="@color/colorFormBackground" />
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvNoEligibility"
         android:gravity="center"
-        android:layout_below="@+id/tvShowLoanEligibility"
+        android:layout_below="@+id/tvNoteQuickLoan"
         android:layout_marginStart="46dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="56dp"
