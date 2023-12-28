@@ -16,7 +16,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="15dp"
-        android:text="We have sent you an OTP(SMS verification code). Enter it here"
+        android:text="We have sent an SMS verification code on your phone. Enter it here"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
         android:textColor="@color/colorFormBackground" />
 
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="5dp"
-            android:hint="OTP Number"
+            android:hint="Enter code here"
             android:inputType="number"
             android:layout_marginStart="16dp"/>
 
@@ -73,7 +73,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="7dp"
-        android:text="Didn't get OTP?\n Try again"
+        android:text="Didn't get Code?\n Try again"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorFormBackground" />

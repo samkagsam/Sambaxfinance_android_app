@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryBackground"
+    tools:context=".activities.SendMoneyWithinUgandaActivity">
+
+    <!-- ToolBar widget -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0F9D58"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title=" Sambax"
+        app:titleTextColor="#ffff" />
+
+
+    <TextView
+        android:id="@+id/com1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="15dp"
+        android:text="Send Money Within Uganda"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorFormBackground"
+        android:layout_below="@id/toolbar"/>
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_below="@id/com1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Receiver Phone number: "
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorFormBackground"
+            android:layout_marginStart="10dp"/>
+
+        <EditText
+            android:id="@+id/etPhoneNumberTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:hint="Phone Number eg 07xxxxxxxx"
+            android:inputType="textPersonName"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:text="Amount:"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorFormBackground" />
+
+        <EditText
+            android:id="@+id/etAmountTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:hint="Amount"
+            android:inputType="number"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/tvResponseTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:drawablePadding="5dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/red"
+            android:layout_marginStart="16dp"/>
+
+
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/button_send_mobile_money_within_uganda"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/linearLayout"
+        android:background="@drawable/rounded_corner"
+        android:text="Send Money"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryBackground" />
+
+    <TextView
+        android:id="@+id/tv_mm_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_send_mobile_money_within_uganda"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:lineSpacingExtra="7dp"
+        android:text="Note: Mobile money is immediately sent to receiver"
+        android:textAlignment="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textColor="@color/colorFormBackground" />
+
+
+
+
+
+
+
+
+</RelativeLayout>

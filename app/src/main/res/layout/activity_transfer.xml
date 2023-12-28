@@ -19,20 +19,47 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title=" Sambax Finance"
+        app:title=" Sambax"
         app:titleTextColor="#ffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_lugambo"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="Receiver Phone Number or Email:"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorFormBackground" />
+
+    <EditText
+        android:id="@+id/etPhoneNumberRecipient"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/tv_lugambo"
+        android:hint="Phone number or Email"
+        android:inputType="textPersonName"
+        android:background="@drawable/rounded_corner"
+        />
+
+
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_money_to_send"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/etPhoneNumberRecipient"
         android:layout_marginStart="46dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
-        android:text="Enter the amount of money you want to send"
+        android:text="Amount:"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
         android:textColor="@color/colorFormBackground" />
 
@@ -48,68 +75,18 @@
         android:background="@drawable/rounded_corner"
         />
 
+
     <TextView
+        android:id="@+id/tvResponseTransferMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_lugambo"
-        android:layout_below="@+id/et_money_to_send"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:text="Enter phone number of the person you want to send money to"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-        android:textColor="@color/colorFormBackground" />
-
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_lugambo"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/rounded_corner"
-        android:orientation="vertical"
-        android:padding="10dp">
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtTextInputLayoutRecover"
-            app:prefixText="+256"
-            app:prefixTextColor="@color/black"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/etPhoneNumberRecipient"
-                android:inputType="number"
-                android:hint="Phone Number"
-                android:maxLength="9"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <TextView
-            android:id="@+id/tvResponseTransferMoney"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="15dp"
-            android:lineSpacingExtra="7dp"
-            android:text=""
-            android:textAlignment="center"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textColor="@color/red" />
-
-
-
-    </LinearLayout>
+        android:layout_marginTop="15dp"
+        android:lineSpacingExtra="7dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textColor="@color/red"
+        android:layout_below="@+id/et_money_to_send"/>
 
 
 
@@ -123,7 +100,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:background="@drawable/custom_button"
-        android:text="Send Money"
+        android:text="Transfer"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimaryBackground" />
 

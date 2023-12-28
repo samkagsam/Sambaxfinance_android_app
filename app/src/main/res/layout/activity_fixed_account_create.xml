@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title=" Sambax Finance"
+        app:title=" Sambax"
         app:titleTextColor="#ffff" />
 
 
@@ -35,7 +35,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
 
-        android:text="Enter the number of months you want to fix your deposits.Minimum 3, Maximum 12."
+        android:text="Enter the number of months you want to fix deposits in your wallet.Minimum 3, Maximum 12."
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
         android:textColor="@color/colorFormBackground" />
 

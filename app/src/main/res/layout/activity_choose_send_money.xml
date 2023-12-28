@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryBackground"
+    tools:context=".activities.ChooseSendMoneyActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ToolBar widget -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0F9D58"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title=" Sambax"
+                app:titleTextColor="#ffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send Money"
+                android:textColor="@color/colorFormBackground"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/colorFormBackground"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/btn_go_to_send_money_within_uganda"
+                    android:text="Send Mobile Money Within Uganda"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/rounded_corner"
+                    android:textColor="@color/colorPrimaryBackground"
+                    android:layout_gravity="center"
+                    android:textAllCaps="false"/>
+
+                <TextView
+                    android:id="@+id/tvShowWeeklyGroupNotifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_shape"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="0dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/btn_go_to_send_money_to_uganda"
+                    android:text="Send Mobile Money To Uganda From Another Country"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/rounded_corner"
+                    android:textColor="@color/colorPrimaryBackground"
+                    android:layout_gravity="center"
+                    android:textAllCaps="false"/>
+
+                <TextView
+                    android:id="@+id/tvShowLongTermGroupNotifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+
+                    android:background="@drawable/circle_shape"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="0dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/btn_go_to_internal_funds_transfer"
+                    android:text="Internal Funds Transfer"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/rounded_corner"
+                    android:textColor="@color/colorPrimaryBackground"
+                    android:layout_gravity="center"
+                    android:textAllCaps="false"/>
+
+                <TextView
+                    android:id="@+id/tvShowInboundTransferNotification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+
+                    android:background="@drawable/circle_shape"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="0dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+
+                    />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

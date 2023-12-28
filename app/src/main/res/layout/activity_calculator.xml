@@ -28,7 +28,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:title=" Sambax Finance"
+                app:title=" Sambax"
                 app:titleTextColor="#ffff" />
 
             <TextView
@@ -72,45 +72,52 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="50dp"
-                android:background="@drawable/rounded_corner"
+
                 android:orientation="vertical"
                 android:padding="10dp">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtTextInputLayoutTry1"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Loan amount required:"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorFormBackground"
+                    android:layout_marginStart="10dp"/>
+
+                <EditText
+                    android:id="@+id/etLoanInquired"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:prefixText="Loan amount required:"
-                    app:prefixTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    app:prefixTextColor="@color/black">
+                    android:drawablePadding="5dp"
+                    android:hint="Loan amount required e.g 300000"
+                    android:inputType="textPersonName"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/rounded_corner"
+                    android:padding="10dp"
+                    />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etLoanInquired"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Loan amount required e.g 300000"
-                        android:inputType="number"
-                        android:textColor="@color/black" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Loan period in days:"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorFormBackground"
+                    android:layout_marginStart="10dp"/>
 
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtTextInputLayoutTry2"
+                <EditText
+                    android:id="@+id/etLoanPeriodInquired"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:prefixText="Loan Period in days:"
-                    app:prefixTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    app:prefixTextColor="@color/black">
+                    android:drawablePadding="5dp"
+                    android:hint="Loan Period in days e.g 30"
+                    android:inputType="textPersonName"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/rounded_corner"
+                    android:padding="10dp"
+                    />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etLoanPeriodInquired"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Loan Period in days e.g 30"
-                        android:inputType="number"
-                        android:textColor="@color/black" />
-
-                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/textViewInterestRate"
@@ -121,7 +128,7 @@
                     android:layout_marginEnd="8dp"
                     android:text="Interest Rate: 0.00167% per day"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorFormBackground"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
 
@@ -136,7 +143,7 @@
                     android:layout_marginEnd="8dp"
                     android:text="Loan Processing Fee:"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorFormBackground"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
 
@@ -151,7 +158,7 @@
                     android:layout_marginEnd="8dp"
                     android:text=""
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorFormBackground"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
 

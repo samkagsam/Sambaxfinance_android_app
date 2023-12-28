@@ -27,13 +27,7 @@ class OtpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otp)
 
-        // Get the Intent that started this activity and extract the string
-        //val first_name_fresh = intent.getStringExtra(FIRST_NAME_ASSIGN)
-        //val last_name_fresh = intent.getStringExtra(LAST_NAME_ASSIGN)
-        //val password_fresh = intent.getStringExtra(PASSWORD_ASSIGN)
-        //val phone_number_fresh = intent.getStringExtra(PHONE_NUMBER_ASSIGN)
-        //val customer_image_url = intent.getStringExtra(CUSTOMER_IMAGE_URL)
-        //val customer_id_url = intent.getStringExtra(CUSTOMER_ID_URL)
+
         val signtoken = intent.getStringExtra(EXTRA_MESSAGE2)
 
 

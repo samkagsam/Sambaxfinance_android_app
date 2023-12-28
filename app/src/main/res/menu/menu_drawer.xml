@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/action_one"
+            android:title="About Sambax" />
+        <item
+            android:id="@+id/action_two"
+            android:title="Terms and Conditions" />
+        <!-- Add other menu items here -->
+        <item
+            android:id="@+id/action_three"
+            android:title="User Guide and FAQs"/>
+
+        <item
+            android:id="@+id/action_four"
+            android:title="Contact Us"/>
+        <item
+            android:id="@+id/action_five"
+            android:title="My Loan Applications"/>
+        <item
+            android:id="@+id/action_six"
+            android:title="Loan Calculator"/>
+        <item
+            android:id="@+id/action_seven"
+            android:title="Financial Literacy"/>
+        <item
+            android:id="@+id/action_eight"
+            android:title="Profile"/>
+        <item
+            android:id="@+id/action_nine"
+            android:title="Delete Account"/>
+        <item
+            android:id="@+id/action_ten"
+            android:title="Log Out"/>
+    </group>
+
+</menu>

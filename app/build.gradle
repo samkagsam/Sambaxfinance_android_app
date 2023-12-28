@@ -15,8 +15,8 @@ android {
         applicationId "com.sambaxfinance.sambax"
         minSdk 21
         targetSdk 33
-        versionCode 17
-        versionName "Onion"
+        versionCode 19
+        versionName "Entula"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -3,13 +3,20 @@ package com.sambaxfinance.sambax.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 import com.sambaxfinance.sambax.R
 import com.sambaxfinance.sambax.api.*
 import com.sambaxfinance.sambax.models.*
@@ -29,9 +36,10 @@ class LandingActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         // Display application icon in the toolbar
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-        supportActionBar!!.setLogo(R.drawable.sambax_logo_1_24)
-        supportActionBar!!.setDisplayUseLogoEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setLogo(R.drawable.sambax_logo_1_24)
+        supportActionBar?.setDisplayUseLogoEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true) // Adding hamburger icon
 
         //let us initiate all the buttons
         val buttonApply = findViewById<Button>(R.id.buttonApply)
@@ -40,10 +48,46 @@ class LandingActivity : AppCompatActivity() {
         val buttonWithdraw = findViewById<Button>(R.id.buttonWithdraw)
         val buttonGoToGroupSavings = findViewById<Button>(R.id.buttonGoToGroupSavings)
         val buttonViewLoanPayments = findViewById<Button>(R.id.buttonViewLoanPayments)
-        val buttonLoanCalculator = findViewById<Button>(R.id.buttonLoanCalculator)
+        val button_go_to_send_money = findViewById<Button>(R.id.button_go_to_send_money)
         val buttonStatement = findViewById<Button>(R.id.buttonStatement)
         val buttonFixedDeposit = findViewById<Button>(R.id.buttonFixedDepositAccount)
-        val buttonTransferMoney = findViewById<Button>(R.id.buttonTransferMoney)
+        val button_go_to_pay_bill = findViewById<Button>(R.id.button_go_to_pay_bill)
+
+        val drawer: DrawerLayout = findViewById(R.id.drawer_layout)
+        val navigationView: NavigationView = findViewById(R.id.nav_view)
+
+
+        /*val params = toolbar.layoutParams as LinearLayout.LayoutParams
+        params.gravity = Gravity.END // Set gravity to end (right)
+        toolbar.layoutParams = params
+        */
+
+
+
+        /*val toggle = ActionBarDrawerToggle(
+            this, drawer, toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+        drawer.addDrawerListener(toggle)
+        toggle.syncState()*/
+
+        // Change gravity of the toolbar to move hamburger icon to the right
+        val params = toolbar.layoutParams as LinearLayout.LayoutParams
+        params.gravity = Gravity.END // Set gravity to end (right)
+        toolbar.layoutParams = params
+
+        //val drawer: DrawerLayout = findViewById(R.id.drawer_layout)
+        val toggle = ActionBarDrawerToggle(
+            this, drawer, toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+        drawer.addDrawerListener(toggle)
+        toggle.syncState()
+
+        // Hide the overflow menu icon
+        toolbar.overflowIcon = null
 
         // Get the Intent that started this activity and extract the string
         val token = intent.getStringExtra(EXTRA_MESSAGE)
@@ -148,9 +192,9 @@ class LandingActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-        buttonLoanCalculator.setOnClickListener {
+        button_go_to_send_money.setOnClickListener {
             //start a new activity here
-            val intent = Intent(this@LandingActivity, CalculatorActivity::class.java).apply {
+            val intent = Intent(this@LandingActivity, ChooseSendMoneyActivity::class.java).apply {
                 putExtra(EXTRA_MESSAGE, token)
             }
             startActivity(intent)
@@ -215,21 +259,119 @@ class LandingActivity : AppCompatActivity() {
                 }
             )
         }
-        buttonTransferMoney.setOnClickListener {
+        button_go_to_pay_bill.setOnClickListener {
             //start a new activity here
-            val intent = Intent(this@LandingActivity, TransferActivity::class.java).apply {
+            val intent = Intent(this@LandingActivity, PayBillActivity::class.java).apply {
                 putExtra(EXTRA_MESSAGE, token)
             }
             startActivity(intent)
         }
+
+        navigationView.setNavigationItemSelectedListener { item ->
+            val id = item.itemId
+
+            // Handle menu item clicks here
+            when (item.itemId) {
+                R.id.action_one -> {
+                    // Handle action one click
+                    println("you clicked about us")
+                    // For example, navigate to a specific fragment or perform an action
+                    val intent = Intent(this@LandingActivity, AboutActivity::class.java)
+                    startActivity(intent)
+
+                    true
+                }
+                R.id.action_two -> {
+                    // Handle action two click
+                    println("you clicked terms")
+                    val intent = Intent(this@LandingActivity, TermsActivity::class.java)
+                    startActivity(intent)
+
+                    true
+                }
+                R.id.action_three -> {
+                    //Toast.makeText(this, "Item Three Clicked", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this@LandingActivity, UserGuideActivity::class.java)
+                    startActivity(intent)
+
+                    true
+                }
+                R.id.action_four -> {
+                    //Toast.makeText(this, "Item four Clicked", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this@LandingActivity, ContactUsActivity::class.java)
+                    startActivity(intent)
+
+                    true
+                }
+                R.id.action_five -> {
+                    //start a new activity here
+                    val intent = Intent(this@LandingActivity, MyLoanApplicationsActivity::class.java).apply {
+                        putExtra(EXTRA_MESSAGE, token)
+                    }
+                    startActivity(intent)
+
+                    true
+                }
+                R.id.action_six -> {
+                    //start a new activity here
+                    val intent = Intent(this@LandingActivity, CalculatorActivity::class.java).apply {
+                        putExtra(EXTRA_MESSAGE, token)
+                    }
+                    startActivity(intent)
+
+                    true
+                }
+                R.id.action_seven -> {
+                    //start a new activity here
+                    val intent = Intent(this@LandingActivity, BlogActivity::class.java).apply {
+                        putExtra(EXTRA_MESSAGE, token)
+                    }
+                    startActivity(intent)
+
+                    true
+                }
+                R.id.action_nine -> {
+                    //start a new activity here
+                    val intent = Intent(this@LandingActivity, DeleteAccountActivity::class.java).apply {
+                        putExtra(EXTRA_MESSAGE, token)
+                    }
+                    startActivity(intent)
+
+                    true
+                }
+                R.id.action_ten -> {
+                    //start a new activity here
+                    val intent = Intent(this@LandingActivity, MainActivity::class.java).apply {
+                        putExtra(EXTRA_MESSAGE, token)
+                    }
+                    startActivity(intent)
+
+                    true
+                }
+                // Add more cases for other menu items if needed
+
+                else -> false
+            }
+
+            drawer.closeDrawer(GravityCompat.START)
+            true
+        }
+
     }
 
+    /*
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu, menu)
         return true
+    }*/
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_drawer, menu)
+        return true
     }
 
+    /*
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Get the Intent that started this activity and extract the string
         val token = intent.getStringExtra(EXTRA_MESSAGE)
@@ -268,10 +410,20 @@ class LandingActivity : AppCompatActivity() {
             startActivity(intent)
             return true
         }
+        if (id == R.id.action_six) {
+            //start a new activity here
+            val intent = Intent(this@LandingActivity, CalculatorActivity::class.java).apply {
+                putExtra(EXTRA_MESSAGE, token)
+            }
+            startActivity(intent)
+            return true
+        }
 
         return super.onOptionsItemSelected(item)
 
-    }
+    }*/
+
+
 
     fun getTotalWeeklyGroupRequests(token:String){
 

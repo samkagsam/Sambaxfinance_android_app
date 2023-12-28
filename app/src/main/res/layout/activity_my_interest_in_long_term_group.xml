@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title=" Sambax Finance"
+        app:title=" Sambax"
         app:titleTextColor="#ffff" />
 
     <TextView
@@ -31,7 +31,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
 
-        android:text="Note: Interest is given only on deposits which are 3 months old or more"
+        android:text="Note: Interest is given only on deposits which are 1 month old or more"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
         android:textColor="@color/colorFormBackground" />
 

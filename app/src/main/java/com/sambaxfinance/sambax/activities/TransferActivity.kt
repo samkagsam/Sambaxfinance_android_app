@@ -69,7 +69,8 @@ class TransferActivity : AppCompatActivity() {
             }, 30000) // 30 seconds in milliseconds
 
 
-            val phone_number = phone_number_given.text.toString().toIntOrNull() ?: 0
+            //val phone_number = phone_number_given.text.toString().toIntOrNull() ?: 0
+            val phone_number_fresh = phone_number_given.text.toString().trim()
             val transfer_money = transfer_money_given.text.toString().toIntOrNull() ?: 0
 
             if(transfer_money == 0){
@@ -82,20 +83,28 @@ class TransferActivity : AppCompatActivity() {
             println(transfer_money)
 
 
+            /*
             if(phone_number == 0){
                 phone_number_given.error = "Amount to deposit is required"
+                phone_number_given.requestFocus()
+                return@setOnClickListener
+
+            }*/
+
+            if(phone_number_fresh.isEmpty()){
+                phone_number_given.error = "phone number is required"
                 phone_number_given.requestFocus()
                 return@setOnClickListener
 
             }
 
             println(token)
-            println(phone_number)
+            println(phone_number_fresh)
 
 
 
             //val transactionRequestModel = TransactionRequestModel(deposit_money)
-            val transferMoneyRequestModel = TransferMoneyRequestModel(transfer_money, phone_number)
+            val transferMoneyRequestModel = TransferMoneyRequestModel(phone_number_fresh, transfer_money)
 
             val response = ServiceBuilder.buildService(ApiInterfaceTransferMoney::class.java)
             response.sendReq(transferMoneyRequestModel,"Bearer " + token).enqueue(

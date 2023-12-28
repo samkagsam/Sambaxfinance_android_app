@@ -71,8 +71,9 @@ class UserSignUpActivity : AppCompatActivity() {
             val first_name_fresh = first_name_given.text.toString().trim()
             val last_name_fresh = last_name_given.text.toString().trim()
             val password_fresh = password_given.text.toString().trim()
-            //val phone_number_fish = phone_number.text.toString().trim()
-            val phone_number_fresh = phone_number_given.text.toString().toIntOrNull() ?: 0
+            val phone_number_fresh = phone_number_given.text.toString().trim()
+            //val phone_number_fresh = phone_number_given.text.toString().toIntOrNull() ?: 0
+            val email_fresh = "0"
 
 
 
@@ -89,7 +90,14 @@ class UserSignUpActivity : AppCompatActivity() {
                 return@setOnClickListener
 
             }
+            /*
             if(phone_number_fresh == 0){
+                phone_number_given.error = "phone number is required"
+                phone_number_given.requestFocus()
+                return@setOnClickListener
+
+            }*/
+            if(phone_number_fresh.isEmpty()){
                 phone_number_given.error = "phone number is required"
                 phone_number_given.requestFocus()
                 return@setOnClickListener
@@ -104,8 +112,8 @@ class UserSignUpActivity : AppCompatActivity() {
             }
 
             //DummyModel
-            val requestModel = RequestModel(phone_number_fresh, password_fresh,first_name_fresh,last_name_fresh,
-                "google_refused", "google_refused")
+            val requestModel = RequestModel(first_name_fresh,last_name_fresh,phone_number_fresh,email_fresh,password_fresh,
+                )
 
             val response = ServiceBuilder.buildService(ApiInterface::class.java)
             response.sendReq(requestModel).enqueue(

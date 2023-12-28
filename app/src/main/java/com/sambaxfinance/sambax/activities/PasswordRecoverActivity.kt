@@ -50,19 +50,29 @@ class PasswordRecoverActivity : AppCompatActivity() {
                 buttonSendPhonenumber.isEnabled = true
             }, 30000) // 30 seconds in milliseconds
 
-            val phone_number_fresh = phone_number_given.text.toString().toIntOrNull() ?: 0
+            //val phone_number_fresh = phone_number_given.text.toString().toIntOrNull() ?: 0
+            val phone_number_fresh = phone_number_given.text.toString().trim()
 
+            /*
             if(phone_number_fresh == 0){
+                phone_number_given.error = "phone number is required"
+                phone_number_given.requestFocus()
+                return@setOnClickListener
+
+            }*/
+
+            if(phone_number_fresh.isEmpty()){
                 phone_number_given.error = "phone number is required"
                 phone_number_given.requestFocus()
                 return@setOnClickListener
 
             }
 
+            val user_email = "0"
             //val phone_number_string = phone_number_fresh.toString()
 
             //let us send request to our server
-            val requestModel = ForgotPasswordRequestModel(phone_number_fresh)
+            val requestModel = ForgotPasswordRequestModel(phone_number_fresh, user_email)
 
             val response = ServiceBuilder.buildService(ApiInterfaceForgotPassword::class.java)
             response.sendReq(requestModel).enqueue(

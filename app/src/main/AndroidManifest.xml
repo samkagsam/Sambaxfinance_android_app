@@ -18,6 +18,42 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.DeleteAccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.BlogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.SendMoneyToUgandaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.SendMoneyWithinUgandaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.PayBillActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ChooseSendMoneyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.EmailOtpRecoverActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.EmailPasswordRecoverActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ChoosePasswordRecoverActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.EmailSignupOtpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ChooseSignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.EmailSignupActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.FdaLoanNoteActivity"
             android:exported="false" />
         <activity

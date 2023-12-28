@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val buttonLogin = findViewById<Button>(R.id.buttonLogin)
+        val buttonCreateNewAccount = findViewById<Button>(R.id.buttonCreateNewAccount)
 
         val password_given = findViewById<EditText>(R.id.etPassword)
         val phone_number_given = findViewById<EditText>(R.id.etPhoneNumber)
@@ -73,12 +74,21 @@ class MainActivity : AppCompatActivity() {
 
             val password_fresh = password_given.text.toString().trim()
             //val phone_number_fish = phone_number.text.toString().trim()
-            val phone_number_fresh = phone_number_given.text.toString().toIntOrNull() ?: 0
+
+            //val phone_number_fresh = phone_number_given.text.toString().toIntOrNull() ?: 0
+            val phone_number_fresh = phone_number_given.text.toString().trim()
 
 
 
-
+            /*
             if(phone_number_fresh == 0){
+                phone_number_given.error = "phone number is required"
+                phone_number_given.requestFocus()
+                return@setOnClickListener
+
+            }*/
+
+            if(phone_number_fresh.isEmpty()){
                 phone_number_given.error = "phone number is required"
                 phone_number_given.requestFocus()
                 return@setOnClickListener
@@ -157,12 +167,18 @@ class MainActivity : AppCompatActivity() {
 
         tvSignUp.setOnClickListener {
             println("you clicked signup")
-            val intent = Intent(this, UserSignUpActivity::class.java)
+            val intent = Intent(this, ChooseSignupActivity::class.java)
             startActivity(intent)
         }
+        buttonCreateNewAccount.setOnClickListener {
+            println("you clicked create new account")
+            val intent = Intent(this, ChooseSignupActivity::class.java)
+            startActivity(intent)
+        }
+
         tv_forgot_password.setOnClickListener {
             println("you clicked forgot password")
-            val intent = Intent(this, PasswordRecoverActivity::class.java)
+            val intent = Intent(this, ChoosePasswordRecoverActivity::class.java)
             startActivity(intent)
         }
 

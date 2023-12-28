@@ -9,27 +9,24 @@
 
 
     <TextView
+        android:id="@+id/com1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="56dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="15dp"
-        android:text="Welcome to Sambax Finance"
+        android:text="Welcome to Sambax"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-        android:textColor="@color/colorFormBackground" />
+        android:textColor="@color/colorFormBackground"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
+        android:id="@+id/com2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/linearLayout"
+        android:layout_below="@id/com1"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:text="Login"
+        android:text="Log In"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
         android:textColor="@color/colorFormBackground" />
 
@@ -37,35 +34,41 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/rounded_corner"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:layout_below="@id/com2">
 
-        <com.google.android.material.textfield.TextInputLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Phone number or Email address"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorFormBackground"
+            android:layout_marginStart="10dp"/>
+
+        <EditText
+            android:id="@+id/etPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtTextInputLayout"
-            app:prefixText="+256"
-            app:prefixTextColor="@color/black"
+            android:drawablePadding="5dp"
+            android:hint="Phone Number or email"
+            android:inputType="textPersonName"
             android:layout_marginStart="16dp"
-            >
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/etPhoneNumber"
-                android:inputType="number"
-                android:hint="Phone Number"
-                android:maxLength="9"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:text="Password"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorFormBackground" />
 
         <EditText
             android:id="@+id/etPassword"
@@ -74,7 +77,9 @@
             android:drawablePadding="5dp"
             android:hint="Password"
             android:inputType="textPassword"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginStart="16dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp"/>
 
         <TextView
             android:id="@+id/tvLoginResponse"
@@ -95,37 +100,51 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="0dp"
         android:lineSpacingExtra="7dp"
         android:text="Forgot Password?"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorFormBackground" />
 
-    <TextView
-        android:id="@+id/tvSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_forgot_password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:lineSpacingExtra="7dp"
-        android:text="Don't have an Account?\n Sign Up"
-        android:textAlignment="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textColor="@color/colorFormBackground" />
-
-
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/tv_forgot_password"
         android:background="@drawable/rounded_corner"
         android:text="Login"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimaryBackground" />
+
+    <TextView
+        android:id="@+id/tvSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="7dp"
+        android:text="Don't have an Account?"
+        android:textAlignment="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textColor="@color/colorFormBackground" />
+
+    <Button
+        android:id="@+id/buttonCreateNewAccount"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/tvSignUp"
+        android:background="@drawable/rounded_corner"
+        android:text="Create New Account"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryBackground" />
+
+
+
 
 </RelativeLayout>

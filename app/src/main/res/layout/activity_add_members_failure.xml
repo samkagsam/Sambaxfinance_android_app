@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title=" Sambax Finance"
+        app:title=" Sambax"
         app:titleTextColor="#ffff" />
 
 
@@ -33,7 +33,7 @@
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="15dp"
         android:text="Group Invitation Failed. Possible Causes:\n -You are not admin to this saving group.
-         \n -The Phone number you are adding is not registered with Sambax Finance
+         \n -The Phone number you are adding is not registered with Sambax
           \n -The person already belongs to this saving group
            \n -The person has already received a group join request for this group"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
