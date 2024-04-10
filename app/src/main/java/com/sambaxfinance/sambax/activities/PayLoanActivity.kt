@@ -101,7 +101,7 @@ class PayLoanActivity : AppCompatActivity() {
                             }
 
                             //start a new activity here
-                            val intent = Intent(this@PayLoanActivity, LandingActivity::class.java).apply {
+                            val intent = Intent(this@PayLoanActivity, NewLandingActivity::class.java).apply {
                                 putExtra(EXTRA_MESSAGE, token)
                             }
                             startActivity(intent)
@@ -111,7 +111,7 @@ class PayLoanActivity : AppCompatActivity() {
                             Toast.makeText(this@PayLoanActivity,"You have no active loan to pay", Toast.LENGTH_LONG).show()
                             // Capture the layout's TextView and set the string as its text
                             val tvPayResponse = findViewById<TextView>(R.id.tvPayResponse).apply {
-                                text = "You have no active loan to pay or the amount you are trying to pay is more than your loan balance"
+                                text = response.message().toString()
                             }
                         }
                     }

@@ -70,7 +70,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="7dp"
-        android:text="After clicking pay, accept the payment prompt and insert your pin to complete transaction"
+        android:text="N.B: You must have money in your UGX wallet to pay loan"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorFormBackground" />

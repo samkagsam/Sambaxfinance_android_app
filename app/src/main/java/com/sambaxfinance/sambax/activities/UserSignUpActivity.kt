@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.hbb20.CountryCodePicker
 import com.sambaxfinance.sambax.R
 import com.sambaxfinance.sambax.api.ApiInterface
 import com.sambaxfinance.sambax.api.MyApi
@@ -48,8 +49,9 @@ class UserSignUpActivity : AppCompatActivity() {
         val last_name_given = findViewById<EditText>(R.id.etLastName)
         val password_given = findViewById<EditText>(R.id.etPassword2)
         val phone_number_given = findViewById<EditText>(R.id.etPhoneNumber2)
-        //val tvResponseSignUp = findViewById<TextView>(R.id.tvResponseSignUp)
-        //val tvLogin = findViewById<TextView>(R.id.tvLogin)
+
+        val countryCodePicker = findViewById<CountryCodePicker>(R.id.countryCodePicker)
+
 
         buttonSignUp.setOnClickListener {
             if (!isButtonEnabled) {
@@ -65,6 +67,11 @@ class UserSignUpActivity : AppCompatActivity() {
                 isButtonEnabled = true
                 buttonSignUp.isEnabled = true
             }, 30000) // 30 seconds in milliseconds
+
+            // Move the retrieval of selectedCountryName and selectedCountryCode here
+            val selectedCountryName: String = countryCodePicker.selectedCountryName
+            val selectedCountryCode: String = countryCodePicker.selectedCountryCode
+
 
 
             //let us get the form variables
@@ -110,9 +117,11 @@ class UserSignUpActivity : AppCompatActivity() {
                 return@setOnClickListener
 
             }
+            println(selectedCountryName)
+            println(selectedCountryCode)
 
             //DummyModel
-            val requestModel = RequestModel(first_name_fresh,last_name_fresh,phone_number_fresh,email_fresh,password_fresh,
+            val requestModel = RequestModel(first_name_fresh,last_name_fresh,phone_number_fresh,email_fresh,password_fresh, selectedCountryName, selectedCountryCode
                 )
 
             val response = ServiceBuilder.buildService(ApiInterface::class.java)
@@ -168,26 +177,13 @@ class UserSignUpActivity : AppCompatActivity() {
                         }
 
 
-
                     }
 
                 }
             )
 
-
-
-
-
-
-
-
-
         }
 
-
-
     }
-
-
 
 }

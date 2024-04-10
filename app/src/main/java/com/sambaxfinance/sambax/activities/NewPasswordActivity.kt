@@ -66,7 +66,7 @@ class NewPasswordActivity : AppCompatActivity() {
                             }
 
                             //start a new activity here
-                            val intent = Intent(this@NewPasswordActivity, LandingActivity::class.java).apply {
+                            val intent = Intent(this@NewPasswordActivity, NewLandingActivity::class.java).apply {
                                 putExtra(EXTRA_MESSAGE, token)
                             }
                             startActivity(intent)

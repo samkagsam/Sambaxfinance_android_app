@@ -97,8 +97,9 @@ class EmailPasswordRecoverActivity : AppCompatActivity() {
                                 text = ""
                             }
                             //start a new activity here
-                            val intent = Intent(this@EmailPasswordRecoverActivity, EmailOtpRecoverActivity::class.java).apply {
-                                putExtra(EMAIL_ADDRESS_RECOVER_TOKEN_CARRIER, token)
+                            val intent = Intent(this@EmailPasswordRecoverActivity, OtpRecoverActivity::class.java).apply {
+                                //putExtra(EMAIL_ADDRESS_RECOVER_TOKEN_CARRIER, token)
+                                putExtra(EXTRA_MESSAGE3, token)
                             }
                             startActivity(intent)
                         }else{

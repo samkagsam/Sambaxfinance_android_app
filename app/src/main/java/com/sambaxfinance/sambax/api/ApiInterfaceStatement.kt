@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 
 interface ApiInterfaceStatement {
-    @GET("normal_statement")
+    @GET("transaction_history")
     fun sendReq(@Header("Authorization")  authorization:String) : Call<List<StatementResponseModel>>
 }

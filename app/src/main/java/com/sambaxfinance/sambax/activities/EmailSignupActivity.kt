@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.hbb20.CountryCodePicker
 import com.sambaxfinance.sambax.R
 import com.sambaxfinance.sambax.api.ApiInterface
 import com.sambaxfinance.sambax.api.ServiceBuilder
@@ -18,6 +19,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 const val EXTRA_MESSAGE_EMAIL_SIGN_OTP_TOKEN = "com.example.sambax.EXTRA_MESSAGE_EMAIL_SIGN_OTP_TOKEN"
+//const val EXTRA_MESSAGE2 = "com.example.sambax.MESSAGE2"
 
 class EmailSignupActivity : AppCompatActivity() {
 
@@ -34,8 +36,8 @@ class EmailSignupActivity : AppCompatActivity() {
         val password_given = findViewById<EditText>(R.id.etPassword2Email)
         val email_given = findViewById<EditText>(R.id.etYourEmail)
 
-        //val tvResponseSignUp = findViewById<TextView>(R.id.tvResponseSignUp)
-        //val tvLogin = findViewById<TextView>(R.id.tvLogin)
+        val countryCodePicker = findViewById<CountryCodePicker>(R.id.countryCodePicker)
+
 
         buttonSignUp.setOnClickListener {
             if (!isButtonEnabled) {
@@ -51,6 +53,10 @@ class EmailSignupActivity : AppCompatActivity() {
                 isButtonEnabled = true
                 buttonSignUp.isEnabled = true
             }, 30000) // 30 seconds in milliseconds
+
+            // Move the retrieval of selectedCountryName and selectedCountryCode here
+            val selectedCountryName: String = countryCodePicker.selectedCountryName
+            val selectedCountryCode: String = countryCodePicker.selectedCountryCode
 
 
             //let us get the form variables
@@ -98,8 +104,11 @@ class EmailSignupActivity : AppCompatActivity() {
 
             }
 
+            println(selectedCountryName)
+            println(selectedCountryCode)
+
             //DummyModel
-            val requestModel = RequestModel(first_name_fresh,last_name_fresh,phone_number_fresh,email_fresh,password_fresh,
+            val requestModel = RequestModel(first_name_fresh,last_name_fresh,phone_number_fresh,email_fresh,password_fresh, selectedCountryName, selectedCountryCode
             )
 
             val response = ServiceBuilder.buildService(ApiInterface::class.java)
@@ -127,8 +136,9 @@ class EmailSignupActivity : AppCompatActivity() {
                             // Capture the layout's TextView and set the string as its text
 
                             //startActivity(intent)
-                            val intent = Intent(this@EmailSignupActivity, EmailSignupOtpActivity::class.java).apply {
-                                putExtra(EXTRA_MESSAGE_EMAIL_SIGN_OTP_TOKEN, signtoken)
+                            val intent = Intent(this@EmailSignupActivity, OtpActivity::class.java).apply {
+                                //putExtra(EXTRA_MESSAGE_EMAIL_SIGN_OTP_TOKEN, signtoken)
+                                putExtra(EXTRA_MESSAGE2, signtoken)
 
                             }
                             startActivity(intent)

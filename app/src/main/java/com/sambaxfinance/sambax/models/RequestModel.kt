@@ -7,5 +7,7 @@ data class RequestModel(
     val phone_number: String,
     val email: String,
     val password: String,
+    val country: String,
+    val country_code: String
 
 )

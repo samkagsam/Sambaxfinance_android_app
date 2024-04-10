@@ -8,6 +8,6 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiInterfaceLoanApply {
-    @POST("applications")
-    fun sendReq(@Body applyRequestModel: ApplyRequestModel, @Header("Authorization")  authorization:String) : Call<ApplyResponseModel>
+    @POST("loan_application")
+    fun sendReq(@Body applyRequestModel: ApplyRequestModel) : Call<ApplyResponseModel>
 }

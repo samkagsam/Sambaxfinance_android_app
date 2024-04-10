@@ -15,8 +15,8 @@ android {
         applicationId "com.sambaxfinance.sambax"
         minSdk 21
         targetSdk 33
-        versionCode 19
-        versionName "Entula"
+        versionCode 20
+        versionName "Biringanya"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -70,6 +70,8 @@ dependencies {
     // For Kotlin users also import the Kotlin extensions library for Play In-App Update:
     implementation("com.google.android.play:app-update-ktx:2.0.1")
 
+    //this dependency is for implementing the country code picker library
+    implementation 'com.hbb20:ccp:2.5.0'
 
 
 }

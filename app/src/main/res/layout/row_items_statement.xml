@@ -35,6 +35,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/currency"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:textSize="20sp"
+                    android:text="Currency: "/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:id="@+id/transaction_amount"
                     android:textColor="@color/black"
                     android:textStyle="normal"
@@ -85,6 +93,14 @@
                     android:textStyle="normal"
                     android:textSize="20sp"
                     android:text="Created AT:"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/detail"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:textSize="20sp"
+                    android:text="Detail: "/>
 
             </LinearLayout>
 

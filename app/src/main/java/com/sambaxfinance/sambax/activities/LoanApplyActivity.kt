@@ -3,6 +3,7 @@ package com.sambaxfinance.sambax.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.*
 import com.sambaxfinance.sambax.R
 import com.sambaxfinance.sambax.api.ApiInterfaceLoanApply
@@ -12,6 +13,8 @@ import com.sambaxfinance.sambax.api.ServiceBuilder
 //import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.Toolbar
+import com.hbb20.CountryCodePicker
+import com.sambaxfinance.sambax.api.ApiInterface
 import com.sambaxfinance.sambax.models.*
 //import androidx.appcompat.app.AppCompatActivity
 //import kotlinx.android.synthetic.main.activity_main.*
@@ -21,7 +24,8 @@ import retrofit2.Response
 
 
 class LoanApplyActivity : AppCompatActivity() {
-
+    private var isButtonEnabled = true // Variable to track button state
+    private val handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,161 +46,117 @@ class LoanApplyActivity : AppCompatActivity() {
         val token = intent.getStringExtra(EXTRA_MESSAGE)
 
         //let us initiate all the application fields
-        //val first_name_given = findViewById<EditText>(R.id.etFirstNameApply)
-        //val middle_name_given = findViewById<EditText>(R.id.etMiddleNameApply)
-        //val last_name_given = findViewById<EditText>(R.id.etLastNameApply)
-        val gender_given = findViewById<EditText>(R.id.etGender)
-        val date_of_birth_given = findViewById<EditText>(R.id.etBirth)
-        val home_address_given = findViewById<EditText>(R.id.etHomeAddress)
-        val work_address_given = findViewById<EditText>(R.id.etWorkAddress)
-        val nature_of_business_given = findViewById<EditText>(R.id.etNatureOfWork)
-        //val contact_one_given = findViewById<EditText>(R.id.etContactOne)
-        //val contact_two_given = findViewById<EditText>(R.id.etContactTwo)
-        val requested_loan_amount_given = findViewById<EditText>(R.id.etLoanAmount)
-        val guarantor_one_given = findViewById<EditText>(R.id.etGuarantorOne)
-        val guarantor_two_given = findViewById<EditText>(R.id.etGuarantorTwo)
-        val guarantor_one_contact_given = findViewById<EditText>(R.id.etGuarantorOneContact)
-        val guarantor_two_contact_given = findViewById<EditText>(R.id.etGuarantorTwoContact)
-        val guarantor_two_relationship_given = findViewById<EditText>(R.id.etGuarantorTwoRelationship)
-        val guarantor_one_relationship_given = findViewById<EditText>(R.id.etGuarantorOneRelationship)
-        val purpose_for_loan_given = findViewById<EditText>(R.id.etLoanPurpose)
+        val buttonSubmitApplication = findViewById<Button>(R.id.buttonSubmitApplication)
+        val first_name_given = findViewById<EditText>(R.id.etFirstName)
+        val last_name_given = findViewById<EditText>(R.id.etLastName)
+        val phone_number_given = findViewById<EditText>(R.id.etPhoneNumber)
+        val email_given = findViewById<EditText>(R.id.etYourEmail)
+        val loan_amount_given = findViewById<EditText>(R.id.etLoanAmount)
+        val town_given = findViewById<EditText>(R.id.etTown)
+        val district_given = findViewById<EditText>(R.id.etDistrict)
 
-        val buttonSendApplication = findViewById<Button>(R.id.buttonSendApplication)
+        val countryCodePicker = findViewById<CountryCodePicker>(R.id.countryCodePicker)
 
-        buttonSendApplication.setOnClickListener {
-            //let us upload the images here
-            //uploadImage()
 
-            //val first_name = first_name_given.text.toString().trim()
-            //val middle_name = middle_name_given.text.toString().trim()
-            //val last_name = last_name_given.text.toString().trim()
-            val gender = gender_given.text.toString().trim()
-            val date_of_birth = date_of_birth_given.text.toString().trim()
-            val home_address = home_address_given.text.toString().trim()
-            val work_address = work_address_given.text.toString().trim()
-            val nature_of_business = nature_of_business_given.text.toString().trim()
-            //val contact_one = contact_one_given.text.toString().trim().toIntOrNull() ?: 0
-            //val contact_two = contact_two_given.text.toString().trim().toIntOrNull() ?: 0
-            val requested_loan_amount = requested_loan_amount_given.text.toString().trim().toIntOrNull() ?: 0
-            val guarantor_one = guarantor_one_given.text.toString().trim()
-            val guarantor_two = guarantor_two_given.text.toString().trim()
-            val guarantor_one_contact = guarantor_one_contact_given.text.toString().trim().toIntOrNull() ?: 0
-            val guarantor_two_contact = guarantor_two_contact_given.text.toString().trim().toIntOrNull() ?: 0
-            val guarantor_two_relationship = guarantor_two_relationship_given.text.toString().trim()
-            val guarantor_one_relationship = guarantor_one_relationship_given.text.toString().trim()
-            val purpose_for_loan = purpose_for_loan_given.text.toString().trim()
+        buttonSubmitApplication.setOnClickListener {
+            if (!isButtonEnabled) {
+                return@setOnClickListener // Prevent double-clicking
+            }
 
-            /*if(first_name.isEmpty()){
-                first_name_given.error = " is required"
+            // Disable the button
+            isButtonEnabled = false
+            buttonSubmitApplication.isEnabled = false
+
+            // Enable the button after 30 seconds
+            handler.postDelayed({
+                isButtonEnabled = true
+                buttonSubmitApplication.isEnabled = true
+            }, 30000) // 30 seconds in milliseconds
+
+            // Move the retrieval of selectedCountryName and selectedCountryCode here
+            val selectedCountryName: String = countryCodePicker.selectedCountryName
+            val selectedCountryCode: String = countryCodePicker.selectedCountryCode
+
+
+            //let us get the form variables
+            val first_name_fresh = first_name_given.text.toString().trim()
+            val last_name_fresh = last_name_given.text.toString().trim()
+            val phone_number_fresh = phone_number_given.text.toString().trim()
+            val email_fresh = email_given.text.toString().trim()
+            val loan_amount_fresh = loan_amount_given.text.toString().toIntOrNull() ?: 0
+            val town_fresh = town_given.text.toString().trim()
+            val district_fresh = district_given.text.toString().trim()
+            //val phone_number_fresh = phone_number_given.text.toString().toIntOrNull() ?: 0
+            //val phone_number_fresh = "0"
+
+
+
+
+            if(first_name_fresh.isEmpty()){
+                first_name_given.error = "first name is required"
                 first_name_given.requestFocus()
                 return@setOnClickListener
 
             }
-            if(last_name.isEmpty()){
-                last_name_given.error = " is required"
+
+            if(last_name_fresh.isEmpty()){
+                last_name_given.error = "last name is required"
                 last_name_given.requestFocus()
                 return@setOnClickListener
 
-            }*/
-            if(gender.isEmpty()){
-                gender_given.error = " is required"
-                gender_given.requestFocus()
+            }
+
+            if(phone_number_fresh.isEmpty()){
+                phone_number_given.error = "phone number is required"
+                phone_number_given.requestFocus()
                 return@setOnClickListener
 
             }
-            if(date_of_birth.isEmpty()){
-                date_of_birth_given.error = " is required"
-                date_of_birth_given.requestFocus()
+            if(email_fresh.isEmpty()){
+                email_given.error = "email address is required"
+                email_given.requestFocus()
                 return@setOnClickListener
 
             }
-            if(home_address.isEmpty()){
-                home_address_given.error = " is required"
-                home_address_given.requestFocus()
+
+            if(loan_amount_fresh == 0){
+                loan_amount_given.error = "loan amount is required"
+                loan_amount_given.requestFocus()
                 return@setOnClickListener
 
             }
-            if(work_address.isEmpty()){
-                work_address_given.error = " is required"
-                work_address_given.requestFocus()
+            if(town_fresh.isEmpty()){
+                town_given.error = "town is required"
+                town_given.requestFocus()
                 return@setOnClickListener
 
             }
-            if(nature_of_business.isEmpty()){
-                nature_of_business_given.error = " is required"
-                nature_of_business_given.requestFocus()
+            if(district_fresh.isEmpty()){
+                district_given.error = "district is required"
+                district_given.requestFocus()
                 return@setOnClickListener
 
             }
+
             /*
-            if(contact_one == 0){
-                contact_one_given.error = "phone number is required"
-                contact_one_given.requestFocus()
-                return@setOnClickListener
+            println(first_name_fresh)
+            println(last_name_fresh)
+            println(phone_number_fresh)
+            println(email_fresh)
+            println(loan_amount_fresh)
+            println(town_fresh)
+            println(district_fresh)
+            println(selectedCountryName)
+            println(selectedCountryCode)
 
-            }
-            if(contact_two == 0){
-                contact_two_given.error = "phone number is required"
-                contact_two_given.requestFocus()
-                return@setOnClickListener
+             */
 
-            }*/
-
-            if(requested_loan_amount == 0){
-                requested_loan_amount_given.error = "phone number is required"
-                requested_loan_amount_given.requestFocus()
-                return@setOnClickListener
-
-            }
-            if(guarantor_one.isEmpty()){
-                guarantor_one_given.error = " is required"
-                guarantor_one_given.requestFocus()
-                return@setOnClickListener
-
-            }
-            if(guarantor_two.isEmpty()){
-                guarantor_two_given.error = " is required"
-                guarantor_two_given.requestFocus()
-                return@setOnClickListener
-
-            }
-            if(guarantor_one_contact == 0){
-                guarantor_one_contact_given.error = "phone number is required"
-                guarantor_one_contact_given.requestFocus()
-                return@setOnClickListener
-
-            }
-            if(guarantor_two_contact == 0){
-                guarantor_two_contact_given.error = "phone number is required"
-                guarantor_two_contact_given.requestFocus()
-                return@setOnClickListener
-
-            }
-            if(guarantor_two_relationship.isEmpty()){
-                guarantor_two_relationship_given.error = " is required"
-                guarantor_two_relationship_given.requestFocus()
-                return@setOnClickListener
-
-            }
-            if(guarantor_one_relationship.isEmpty()){
-                guarantor_one_relationship_given.error = " is required"
-                guarantor_one_relationship_given.requestFocus()
-                return@setOnClickListener
-
-            }
-            if(purpose_for_loan.isEmpty()){
-                purpose_for_loan_given.error = " is required"
-                purpose_for_loan_given.requestFocus()
-                return@setOnClickListener
-
-            }
-
-
-
-            val applyRequestModel = ApplyRequestModel("available","available","available", gender, date_of_birth, home_address, work_address, nature_of_business, 1, 1, requested_loan_amount, guarantor_one, guarantor_one_contact, guarantor_one_relationship, guarantor_two, guarantor_two_contact, guarantor_two_relationship, "available", "available", purpose_for_loan)
+            //DummyModel
+            val requestModel = ApplyRequestModel(first_name_fresh,last_name_fresh,phone_number_fresh,email_fresh,loan_amount_fresh, town_fresh, district_fresh, selectedCountryName
+            )
 
             val response = ServiceBuilder.buildService(ApiInterfaceLoanApply::class.java)
-            response.sendReq(applyRequestModel,"Bearer " + token).enqueue(
+            response.sendReq(requestModel).enqueue(
                 object : Callback<ApplyResponseModel> {
                     override fun onResponse(
                         call: Call<ApplyResponseModel>,
@@ -204,49 +164,56 @@ class LoanApplyActivity : AppCompatActivity() {
                     ) {
                         Toast.makeText(this@LoanApplyActivity,response.message().toString(), Toast.LENGTH_LONG).show()
                         println("we were successful")
-                        println(response.message().toString())
-                        println(response.body().toString())
-                        println(response.body()?.id)
-                        println(response.body()?.created_at)
-                        val logintoken = response.body()?.created_at
+                        //println(response.message().toString())
+                        //println(response.body().toString())
+                        //println(response.body()?.access_token)
+                        //println(response.body()?.token_type)
+
+
+
                         val okResponse = response.message().toString()
                         if (okResponse == "Created"){
                             println("hello")
-                            //start a new activity here
-                            //start a new activity here
 
-                            val intent = Intent(this@LoanApplyActivity, MyLoanApplicationsActivity::class.java).apply {
+                            //let us first clear the error field
+                            // Capture the layout's TextView and set the string as its text
+
+                            //startActivity(intent)
+                            val intent = Intent(this@LoanApplyActivity, NewLandingActivity::class.java).apply {
+                                //putExtra(EXTRA_MESSAGE_EMAIL_SIGN_OTP_TOKEN, signtoken)
                                 putExtra(EXTRA_MESSAGE, token)
+
                             }
                             startActivity(intent)
+
 
                         }else{
                             println("no hello")
                             //show rejection in textview, refocus user to renter credentials
+                            // Capture the layout's TextView and set the string as its text
+                            val tvResponse = findViewById<TextView>(R.id.tvResponse).apply {
+                                text = response.message().toString()
+                            }
+
                         }
                     }
 
                     override fun onFailure(call: Call<ApplyResponseModel>, t: Throwable) {
                         Toast.makeText(this@LoanApplyActivity,t.toString(), Toast.LENGTH_LONG).show()
                         println("we failed")
-                        println(t.toString())
+                        //println(t.toString())
+                        // Capture the layout's TextView and set the string as its text
+                        val tvResponse = findViewById<TextView>(R.id.tvResponse).apply {
+                            text = "please check your internet connection"
+                        }
+
                     }
 
                 }
             )
 
-
-
-
-
-
         }
 
-
-
-
     }
-
-
 
 }

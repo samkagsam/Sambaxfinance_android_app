@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_root"
+    android:background="@color/colorPrimaryBackground"
+    tools:context=".activities.WalletActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <!-- ToolBar widget -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0F9D58"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title=" Sambax"
+                app:titleTextColor="#ffff" />
+
+            <TextView
+                android:id="@+id/textWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:text="Wallet"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/colorFormBackground"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                android:layout_gravity="center"
+
+                />
+            <LinearLayout
+                android:id="@+id/linearLayoutKara"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="8dp"
+
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/transaction_history"
+
+                    android:textStyle="normal"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorFormBackground"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                    android:text="Transaction History "
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorFormBackground"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                    android:text=" | "
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exchange_currency_view"
+
+                    android:textStyle="normal"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorFormBackground"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                    android:text=" Exchange"
+                    />
+
+
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+
+                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                app:cardElevation="8dp"
+                android:layout_margin="8dp"
+                >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/ug_flag_round"
+                            android:id="@+id/image_movie"
+                            android:background="@drawable/circular_background"
+                            android:scaleType="fitCenter"
+
+                            />
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="8dp">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/ugx_balance"
+                                android:textColor="@color/black"
+                                android:textStyle="normal"
+                                android:textSize="20sp"
+                                android:text=""
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/ugx_name"
+                                android:textColor="@color/black"
+                                android:textStyle="normal"
+                                android:textSize="20sp"
+                                android:text="Uganda Shillings"
+                                />
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/btn_ugx_add_money"
+
+                                    android:layout_marginTop="5dp"
+                                    android:text="Add Money"
+
+                                    android:background="@drawable/rounded_corner"
+                                    android:textColor="@color/colorPrimaryBackground"
+                                    />
+                                <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/btn_ugx_withdraw"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Withdraw"
+                                    android:background="@drawable/rounded_corner"
+                                    android:textColor="@color/colorPrimaryBackground"
+                                    android:layout_marginLeft="5dp"/>
+                                <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/btn_ugx_fix"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Fix Funds"
+                                    android:background="@drawable/rounded_corner"
+                                    android:textColor="@color/colorPrimaryBackground"
+                                    android:layout_marginLeft="5dp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:cardElevation="8dp"
+                android:layout_margin="8dp"
+                >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/circular_background"
+                            android:id="@+id/layout_usa_flag"
+                            >
+
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/circular_usa_flag"
+                                android:background="@drawable/circular_background"
+                                android:scaleType="centerCrop"
+                                />
+
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="8dp">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/usd_balance"
+                                android:textColor="@color/black"
+                                android:textStyle="normal"
+                                android:textSize="20sp"
+                                android:text=""
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/usd_name"
+                                android:textColor="@color/black"
+                                android:textStyle="normal"
+                                android:textSize="20sp"
+                                android:text="United States Dollar"
+                                />
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/btn_usd_add_money"
+
+                                    android:layout_marginTop="5dp"
+                                    android:text="Add Money"
+
+                                    android:background="@drawable/rounded_corner"
+                                    android:textColor="@color/colorPrimaryBackground"
+                                    />
+
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:cardElevation="8dp"
+                android:layout_margin="8dp"
+                >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/circular_background"
+
+                            >
+
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/circular_saudi_flag"
+                                android:background="@drawable/circular_background"
+                                android:scaleType="centerCrop"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="8dp">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/sar_balance"
+                                android:textColor="@color/black"
+                                android:textStyle="normal"
+                                android:textSize="20sp"
+                                android:text=""
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/sar_name"
+                                android:textColor="@color/black"
+                                android:textStyle="normal"
+                                android:textSize="20sp"
+                                android:text="Saudi Arabia Riyal"
+                                />
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/btn_sar_add_money"
+
+                                    android:layout_marginTop="5dp"
+                                    android:text="Add Money"
+
+                                    android:background="@drawable/rounded_corner"
+                                    android:textColor="@color/colorPrimaryBackground"
+                                    />
+
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:cardElevation="8dp"
+                android:layout_margin="8dp"
+                >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:background="@drawable/circular_background"
+                                >
+
+                                <ImageView
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp"
+                                    android:src="@drawable/circular_qatar_flag"
+                                    android:background="@drawable/circular_background"
+                                    android:scaleType="centerCrop"
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:layout_marginLeft="8dp">
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/qar_balance"
+                                    android:textColor="@color/black"
+                                    android:textStyle="normal"
+                                    android:textSize="20sp"
+                                    android:text=""
+                                    />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/qar_name"
+                                    android:textColor="@color/black"
+                                    android:textStyle="normal"
+                                    android:textSize="20sp"
+                                    android:text="Qatar Riyal"
+                                    />
+
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <Button
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/btn_qar_add_money"
+
+                                        android:layout_marginTop="5dp"
+                                        android:text="Add Money"
+
+                                        android:background="@drawable/rounded_corner"
+                                        android:textColor="@color/colorPrimaryBackground"
+                                        />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:cardElevation="8dp"
+                android:layout_margin="8dp"
+                >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/circular_background"
+                            >
+
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/circular_uae_flag"
+                                android:background="@drawable/circular_background"
+                                android:scaleType="centerCrop"
+                                />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="8dp">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/aed_balance"
+                                android:textColor="@color/black"
+                                android:textStyle="normal"
+                                android:textSize="20sp"
+                                android:text=""
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/aed_name"
+                                android:textColor="@color/black"
+                                android:textStyle="normal"
+                                android:textSize="20sp"
+                                android:text="United Arab Emirates Dirham"
+                                />
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/btn_aed_add_money"
+
+                                    android:layout_marginTop="5dp"
+                                    android:text="Add Money"
+
+                                    android:background="@drawable/rounded_corner"
+                                    android:textColor="@color/colorPrimaryBackground"
+                                    />
+
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/tvResponse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="15dp"
+                android:lineSpacingExtra="7dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/red"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pick_national_id_button"/>
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

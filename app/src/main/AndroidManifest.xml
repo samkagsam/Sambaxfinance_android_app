@@ -18,6 +18,48 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.UgxWithdrawByMobileMoneyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.UgxChooseAddMoneyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AedAddMoneyByCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.QarAddMoneyByCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.SarAddMoneyByCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.UsdAddMoneyByCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.UgxAddMoneyByCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.UgxAddMoneyMobileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.CurrencyExchangeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ExchangeCurrencyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.SendMoneyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.WalletActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.LoansActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.NewLandingActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.DeleteAccountActivity"
             android:exported="false" />
         <activity

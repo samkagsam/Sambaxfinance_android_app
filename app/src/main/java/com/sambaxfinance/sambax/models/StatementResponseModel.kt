@@ -7,5 +7,7 @@ data class StatementResponseModel(
     val old_balance: Int,
     val new_balance: Int,
     val transaction_type: String,
-    val made_by: String
+    val made_by: String,
+    val currency: String,
+    val detail: String
 )

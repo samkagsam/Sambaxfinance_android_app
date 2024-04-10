@@ -11,21 +11,25 @@ import com.sambaxfinance.sambax.R
 class MyAdapterStatement(val context:Context, val transaction_list: List<StatementResponseModel>):RecyclerView.Adapter<MyAdapterStatement.ViewHolder>() {
     class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
         //var transaction_id: TextView
+        var currency: TextView
         var amount: TextView
         var transaction_type: TextView
         var created_at: TextView
         var from_amount_statement: TextView
         var to_amount_statement: TextView
         var made_by_statement: TextView
+        var detail: TextView
 
         init {
             //transaction_id = itemView.findViewById(R.id.transaction_id)
+            currency = itemView.findViewById(R.id.currency)
             amount = itemView.findViewById(R.id.transaction_amount)
             transaction_type = itemView.findViewById(R.id.transaction_type)
             created_at = itemView.findViewById(R.id.transaction_created_at)
             from_amount_statement = itemView.findViewById(R.id.from_amount_statememt)
             to_amount_statement = itemView.findViewById(R.id.to_amount_statement)
             made_by_statement = itemView.findViewById(R.id.made_by_statement)
+            detail = itemView.findViewById(R.id.detail)
         }
 
     }
@@ -37,12 +41,14 @@ class MyAdapterStatement(val context:Context, val transaction_list: List<Stateme
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //holder.transaction_id.text = "Transaction ID: " + transaction_list[position].id.toString()
+        holder.currency.text = "Currency: " + transaction_list[position].currency
         holder.amount.text = "Amount: " + transaction_list[position].amount.toString()
         holder.from_amount_statement.text = "From: " + transaction_list[position].old_balance.toString()
         holder.to_amount_statement.text = "To: " + transaction_list[position].new_balance.toString()
         holder.transaction_type.text = "Transaction Type: " + transaction_list[position].transaction_type
         holder.made_by_statement.text = "Made by: " + transaction_list[position].made_by
         holder.created_at.text = "Created at: " + transaction_list[position].created_at
+        holder.detail.text = "Detail: " + transaction_list[position].detail
     }
 
     override fun getItemCount(): Int {
