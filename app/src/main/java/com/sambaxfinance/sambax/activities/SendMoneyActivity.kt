@@ -4,9 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.hbb20.CountryCodePicker
 import com.sambaxfinance.sambax.R
 import com.sambaxfinance.sambax.api.ApiInterfaceCurrencyExchange
@@ -24,23 +27,23 @@ class SendMoneyActivity : AppCompatActivity() {
     private var isButtonEnabled = true // Variable to track button state
     private val handler = Handler()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_send_money)
 
-        // assigning ID of the toolbar to a variable
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
-
-        // using toolbar as ActionBar
-        setSupportActionBar(toolbar)
-
-        // Display application icon in the toolbar
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-        supportActionBar!!.setLogo(R.drawable.sambax_logo_1_24)
-        supportActionBar!!.setDisplayUseLogoEnabled(true)
+        // Call the setupToolbar function with the appropriate toolbar ID
+        ToolbarUtils.setupToolbar(this, R.id.toolbar)
 
         // Get the Intent that started this activity and extract the string
         val token = intent.getStringExtra(EXTRA_MESSAGE)
+
+        //let us activate the bottom navigation menu
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationViewSendMoneyActivity)
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            NavigationBarUtils.handleNavigationBarItemClick(this, menuItem, token)
+        }
 
         //let us initiate all the application fields
         val button_send_money = findViewById<Button>(R.id.button_send_money)
@@ -139,7 +142,7 @@ class SendMoneyActivity : AppCompatActivity() {
                             }
 
                             //start a new activity here
-                            val intent = Intent(this@SendMoneyActivity, NewLandingActivity::class.java).apply {
+                            val intent = Intent(this@SendMoneyActivity, WalletActivity::class.java).apply {
                                 putExtra(EXTRA_MESSAGE, token)
                             }
                             startActivity(intent)
@@ -168,5 +171,18 @@ class SendMoneyActivity : AppCompatActivity() {
             )
 
         }
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Get the Intent that started this activity and extract the string
+        val token = intent.getStringExtra(EXTRA_MESSAGE)
+        // Handle action bar item clicks here.
+        ActionBarUtils.handleActionBarItemClick(this, item, token)
+
+        return super.onOptionsItemSelected(item)
+
     }
 }

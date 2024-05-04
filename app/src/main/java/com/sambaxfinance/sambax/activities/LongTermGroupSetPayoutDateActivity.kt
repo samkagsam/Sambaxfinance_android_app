@@ -3,12 +3,15 @@ package com.sambaxfinance.sambax.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sambaxfinance.sambax.R
 import com.sambaxfinance.sambax.api.ApiInterfaceLTGSetPayoutDate
 import com.sambaxfinance.sambax.api.ApiInterfaceResetPayoutDate
@@ -25,18 +28,20 @@ class LongTermGroupSetPayoutDateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_long_term_group_set_payout_date)
 
-        // assigning ID of the toolbar to a variable
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
-
-        // using toolbar as ActionBar
-        setSupportActionBar(toolbar)
-
-        // Display application icon in the toolbar
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-        supportActionBar!!.setLogo(R.drawable.sambax_logo_1_24)
-        supportActionBar!!.setDisplayUseLogoEnabled(true)
-
+        // Get the Intent that started this activity and extract the string
         val token = intent.getStringExtra(EXTRA_MESSAGE)
+
+        // Call the setupToolbar function with the appropriate toolbar ID
+        ToolbarUtils.setupToolbar(this, R.id.toolbar)
+
+        //let us activate the bottom navigation menu
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationViewLongTermGroupSetPayoutDateActivity)
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            NavigationBarUtils.handleNavigationBarItemClick(this, menuItem, token)
+        }
+
+        //val token = intent.getStringExtra(EXTRA_MESSAGE)
         val group_identity = intent.getStringExtra(EXTRA_MESSAGE_GROUP)
         val group_identity_int = group_identity!!.toInt()
 
@@ -131,5 +136,18 @@ class LongTermGroupSetPayoutDateActivity : AppCompatActivity() {
                 }
             )
         }
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Get the Intent that started this activity and extract the string
+        val token = intent.getStringExtra(EXTRA_MESSAGE)
+        // Handle action bar item clicks here.
+        ActionBarUtils.handleActionBarItemClick(this, item, token)
+
+        return super.onOptionsItemSelected(item)
+
     }
 }

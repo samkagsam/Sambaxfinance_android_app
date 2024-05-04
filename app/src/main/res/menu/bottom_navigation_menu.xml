@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_wallet"
+        android:icon="@drawable/wallet_icon_225"
+        android:title="Wallet"
+        android:textColor="@color/black"/>
+    <item
+        android:id="@+id/menu_loans"
+        android:icon="@drawable/withdraw_money_icon"
+        android:title="Loans"
+        android:textColor="@color/black"/>
+    <item
+        android:id="@+id/menu_send"
+        android:icon="@drawable/send_icon_225"
+        android:title="Send"
+        android:textColor="@color/black"/>
+    <item
+        android:id="@+id/menu_groups"
+        android:icon="@drawable/team_icon"
+        android:title="Groups"
+        android:textColor="@color/black"/>
+
+
+
+
+
+</menu>

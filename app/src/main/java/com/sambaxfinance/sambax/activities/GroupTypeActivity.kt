@@ -3,11 +3,14 @@ package com.sambaxfinance.sambax.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sambaxfinance.sambax.R
 import com.sambaxfinance.sambax.api.ApiInterfaceGetTotalGroupRequests
 import com.sambaxfinance.sambax.api.ApiInterfaceGetTotalLongTermGroupRequests
@@ -18,23 +21,24 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class GroupTypeActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_type)
 
-        // assigning ID of the toolbar to a variable
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
-
-        // using toolbar as ActionBar
-        setSupportActionBar(toolbar)
-
-        // Display application icon in the toolbar
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-        supportActionBar!!.setLogo(R.drawable.sambax_logo_1_24)
-        supportActionBar!!.setDisplayUseLogoEnabled(true)
+        // Call the setupToolbar function with the appropriate toolbar ID
+        ToolbarUtils.setupToolbar(this, R.id.toolbar)
 
         // Get the Intent that started this activity and extract the string
         val token = intent.getStringExtra(EXTRA_MESSAGE)
+
+        //let us activate the bottom navigation menu
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationViewGroupTypeActivity)
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            NavigationBarUtils.handleNavigationBarItemClick(this, menuItem, token)
+        }
 
         //let us show requests
         getTotalWeeklyGroupRequests(token.toString())
@@ -94,11 +98,6 @@ class GroupTypeActivity : AppCompatActivity() {
                         }
                     }
 
-
-
-
-
-
                 }
 
                 override fun onFailure(call: Call<GetTotalRequestsResponseModel>, t: Throwable) {
@@ -110,13 +109,10 @@ class GroupTypeActivity : AppCompatActivity() {
             }
         )
 
-
         //println(request_total)
         println("eya")
-
         //return request_total!!.toInt()
         //return 3
-
     }
 
     fun getTotalLongTermGroupRequests(token:String){
@@ -161,6 +157,21 @@ class GroupTypeActivity : AppCompatActivity() {
 
         //return request_total!!.toInt()
         //return 2
+
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Get the Intent that started this activity and extract the string
+        val token = intent.getStringExtra(EXTRA_MESSAGE)
+        // Handle action bar item clicks here.
+        ActionBarUtils.handleActionBarItemClick(this, item, token)
+
+        // Add more cases for other menu items if needed
+
+        return super.onOptionsItemSelected(item)
 
     }
 }

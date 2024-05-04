@@ -80,7 +80,7 @@ class OtpActivity : AppCompatActivity() {
                                 text = ""
                             }
                             //start a new activity here
-                            val intent = Intent(this@OtpActivity, NewLandingActivity::class.java).apply {
+                            val intent = Intent(this@OtpActivity, WalletActivity::class.java).apply {
                                 putExtra(EXTRA_MESSAGE, logintoken)
                             }
                             startActivity(intent)

@@ -1,63 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/layout_root"
     android:background="@color/colorPrimaryBackground"
     tools:context=".activities.LtgMembersWithLoansActivity">
 
-    <!-- ToolBar widget -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <ScrollView
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewLtgMembersWithLoansActivity"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <!-- ToolBar widget -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0F9D58"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title=" Sambax"
+                app:titleTextColor="#ffff" />
+
+            <TextView
+                android:id="@+id/tvSee_ltg_members_with_loans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/toolbar"
+
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="46dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginBottom="15dp"
+                android:text="Group Members With Loans"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                android:textColor="@color/colorFormBackground" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/tv_no_group_members_with_loans"
+                android:layout_below="@+id/tvSee_ltg_members_with_loans"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorFormBackground"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_no_group_members_with_loans"
+                android:layout_marginTop="16dp"
+                android:id="@+id/recyclerview_ltg_group_members_with_loans"/>
+
+        </LinearLayout>
+    </ScrollView>
+    <!-- Task bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewLtgMembersWithLoansActivity"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#0F9D58"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+        android:background="@color/white"
+        app:itemTextColor="@color/black"
+        app:itemIconTint="@color/black"
+
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title=" Sambax"
-        app:titleTextColor="#ffff" />
+        app:menu="@menu/bottom_navigation_menu"
+        android:textColor="@color/black"
+        app:labelVisibilityMode="labeled"/>
 
-
-
-    <TextView
-        android:id="@+id/tvSee_ltg_members_with_loans"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/toolbar"
-
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="15dp"
-        android:text="Group Members With Loans"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-        android:textColor="@color/colorFormBackground" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:id="@+id/tv_no_group_members_with_loans"
-        android:layout_below="@+id/tvSee_ltg_members_with_loans"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/colorFormBackground"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_no_group_members_with_loans"
-        android:layout_marginTop="16dp"
-        android:id="@+id/recyclerview_ltg_group_members_with_loans"/>
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewFixedAccountLandingActivity"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,7 +50,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Interest Rate on Your Savings: 18% per annum"
+                    android:text=""
                     android:id="@+id/tv_interest_rate_details"
                     android:layout_below="@+id/tvFDAdetails"
                     android:gravity="center"
@@ -131,7 +133,7 @@
                                 android:layout_width="150dp"
                                 android:layout_height="40dp"
                                 android:layout_marginTop="5dp"
-                                android:text="Deposit"
+                                android:text="Add Money"
                                 android:id="@+id/button_fd_deposit"
                                 android:layout_gravity="center"
                                 android:background="@drawable/rounded_corner"
@@ -314,5 +316,20 @@
         </LinearLayout>
 
     </ScrollView>
+    <!-- Task bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewFixedAccountLandingActivity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:itemTextColor="@color/black"
+        app:itemIconTint="@color/black"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu"
+        android:textColor="@color/black"
+        app:labelVisibilityMode="labeled"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,8 @@ package com.sambaxfinance.sambax.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -10,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sambaxfinance.sambax.R
 import com.sambaxfinance.sambax.api.*
 import com.sambaxfinance.sambax.models.*
@@ -28,20 +31,20 @@ class GroupActivityLanding : AppCompatActivity() {
         // Get the Intent that started this activity and extract the string
         val token = intent.getStringExtra(EXTRA_MESSAGE)
 
-        // assigning ID of the toolbar to a variable
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        // Call the setupToolbar function with the appropriate toolbar ID
+        ToolbarUtils.setupToolbar(this, R.id.toolbar)
+
+        //let us activate the bottom navigation menu
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationViewGroupActivityLanding)
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            NavigationBarUtils.handleNavigationBarItemClick(this, menuItem, token)
+        }
 
         //let us show requests
         getTotalWeeklyGroupRequests(token.toString())
         //getTotalLongTermGroupRequests(token.toString())
 
-        // using toolbar as ActionBar
-        setSupportActionBar(toolbar)
-
-        // Display application icon in the toolbar
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-        supportActionBar!!.setLogo(R.drawable.sambax_logo_1_24)
-        supportActionBar!!.setDisplayUseLogoEnabled(true)
 
         //let us initiate all the buttons
         val buttonCreateGroup = findViewById<Button>(R.id.btnCreateGroup)
@@ -102,10 +105,6 @@ class GroupActivityLanding : AppCompatActivity() {
                     }
 
 
-
-
-
-
                 }
 
                 override fun onFailure(call: Call<GetTotalRequestsResponseModel>, t: Throwable) {
@@ -123,6 +122,19 @@ class GroupActivityLanding : AppCompatActivity() {
 
         //return request_total!!.toInt()
         //return 3
+
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Get the Intent that started this activity and extract the string
+        val token = intent.getStringExtra(EXTRA_MESSAGE)
+        // Handle action bar item clicks here.
+        ActionBarUtils.handleActionBarItemClick(this, item, token)
+
+        return super.onOptionsItemSelected(item)
 
     }
 

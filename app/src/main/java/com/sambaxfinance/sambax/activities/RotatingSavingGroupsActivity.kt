@@ -3,10 +3,13 @@ package com.sambaxfinance.sambax.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sambaxfinance.sambax.R
 import com.sambaxfinance.sambax.api.ApiInterfaceGeneralGroupLanding
 import com.sambaxfinance.sambax.api.ServiceBuilder
@@ -26,6 +29,19 @@ class RotatingSavingGroupsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rotating_saving_groups)
 
+        // Get the Intent that started this activity and extract the string
+        val token = intent.getStringExtra(EXTRA_MESSAGE)
+
+        // Call the setupToolbar function with the appropriate toolbar ID
+        ToolbarUtils.setupToolbar(this, R.id.toolbar)
+
+        //let us activate the bottom navigation menu
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationViewRotatingSavingGroupsActivity)
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            NavigationBarUtils.handleNavigationBarItemClick(this, menuItem, token)
+        }
+
         //let us initialize more variables
         val recyclerview_user_groups = findViewById<RecyclerView>(R.id.rvUserSavingGroups)
         recyclerview_user_groups.setHasFixedSize(true)
@@ -33,8 +49,7 @@ class RotatingSavingGroupsActivity : AppCompatActivity() {
         linearLayoutManager = LinearLayoutManager(this)
         recyclerview_user_groups.layoutManager = linearLayoutManager
 
-        // Get the Intent that started this activity and extract the string
-        val token = intent.getStringExtra(EXTRA_MESSAGE)
+
 
         val response2 = ServiceBuilder.buildService(ApiInterfaceGeneralGroupLanding::class.java)
         response2.sendReq("Bearer " + token).enqueue(
@@ -95,5 +110,18 @@ class RotatingSavingGroupsActivity : AppCompatActivity() {
 
             }
         )
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Get the Intent that started this activity and extract the string
+        val token = intent.getStringExtra(EXTRA_MESSAGE)
+        // Handle action bar item clicks here.
+        ActionBarUtils.handleActionBarItemClick(this, item, token)
+
+        return super.onOptionsItemSelected(item)
+
     }
 }

@@ -1,147 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/layout_root"
     android:background="@color/colorPrimaryBackground"
     tools:context=".activities.CreateLongTermGroupActivity">
 
-    <!-- ToolBar widget -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <ScrollView
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewCreateLongTermGroupActivity"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <!-- ToolBar widget -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0F9D58"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title=" Sambax"
+                app:titleTextColor="#ffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/tvInstructLtgName"
+                android:layout_below="@id/toolbar"
+
+
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginBottom="15dp"
+                android:text="Name Your Group"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                android:textColor="@color/colorFormBackground" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutNameLtg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvInstructLtgName"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/rounded_corner"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+
+
+                <EditText
+                    android:id="@+id/et_enter_ltg_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:drawablePadding="5dp"
+                    android:hint="Enter the name of your group"
+                    android:inputType="textPersonName" />
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_ltg_month_note"
+
+                android:layout_below="@+id/linearLayoutNameLtg"
+
+
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+
+                android:text="Enter the number of months you want to fix your group savings.Minimum 3, Maximum 12."
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                android:textColor="@color/colorFormBackground" />
+
+
+
+            <LinearLayout
+                android:id="@+id/linearLayoutFDACreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_ltg_month_note"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_corner"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+
+                <EditText
+                    android:id="@+id/et_ltg_months"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:drawablePadding="5dp"
+                    android:hint="Enter the number of months"
+                    android:inputType="number"
+                    android:minHeight="48dp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_LTG_create_response"
+                    android:textColor="@color/red"/>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvTryAgain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linearLayoutFDACreate"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:lineSpacingExtra="7dp"
+                android:text="Withdraws are not allowed until the fixed time is expired"
+                android:textAlignment="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorFormBackground" />
+
+
+
+            <Button
+                android:id="@+id/buttonCreateLTG"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/rounded_corner"
+                android:text="Create Group"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimaryBackground"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+    </ScrollView>
+    <!-- Task bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewCreateLongTermGroupActivity"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#0F9D58"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+        android:background="@color/white"
+        app:itemTextColor="@color/black"
+        app:itemIconTint="@color/black"
+
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title=" Sambax"
-        app:titleTextColor="#ffff" />
+        app:menu="@menu/bottom_navigation_menu"
+        android:textColor="@color/black"
+        app:labelVisibilityMode="labeled"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:id="@+id/tvInstructLtgName"
-        android:layout_below="@id/toolbar"
-
-
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="15dp"
-        android:text="Name Your Group"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-        android:textColor="@color/colorFormBackground" />
-
-    <LinearLayout
-        android:id="@+id/linearLayoutNameLtg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvInstructLtgName"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/rounded_corner"
-        android:orientation="vertical"
-        android:padding="10dp">
-
-
-
-        <EditText
-            android:id="@+id/et_enter_ltg_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-
-            android:drawablePadding="5dp"
-            android:hint="Enter the name of your group"
-            android:inputType="textPersonName" />
-
-
-    </LinearLayout>
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_ltg_month_note"
-
-        android:layout_below="@+id/linearLayoutNameLtg"
-
-
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-
-        android:text="Enter the number of months you want to fix your group savings.Minimum 3, Maximum 12."
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-        android:textColor="@color/colorFormBackground" />
-
-
-
-    <LinearLayout
-        android:id="@+id/linearLayoutFDACreate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_ltg_month_note"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_corner"
-        android:orientation="vertical"
-        android:padding="10dp">
-
-
-        <EditText
-            android:id="@+id/et_ltg_months"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-
-            android:drawablePadding="5dp"
-            android:hint="Enter the number of months"
-            android:inputType="number"
-            android:minHeight="48dp" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_LTG_create_response"
-            android:textColor="@color/red"/>
-
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvTryAgain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linearLayoutFDACreate"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:lineSpacingExtra="7dp"
-        android:text="Withdraws are not allowed until the fixed time is expired"
-        android:textAlignment="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textColor="@color/colorFormBackground" />
-
-
-
-    <Button
-        android:id="@+id/buttonCreateLTG"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/rounded_corner"
-        android:text="Create Group"
-        android:textAllCaps="false"
-        android:textColor="@color/colorPrimaryBackground" />
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

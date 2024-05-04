@@ -1,13 +1,17 @@
 package com.sambaxfinance.sambax.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sambaxfinance.sambax.R
 import com.sambaxfinance.sambax.api.ApiInterfaceMyLoanPayments
 import com.sambaxfinance.sambax.api.ServiceBuilder
@@ -22,21 +26,23 @@ class MyLoanPaymentsActivity : AppCompatActivity() {
     lateinit var myAdapterPayments: MyAdapterPayments
     lateinit var linearLayoutManager: LinearLayoutManager
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_loan_payments)
 
-        // assigning ID of the toolbar to a variable
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        // Call the setupToolbar function with the appropriate toolbar ID
+        ToolbarUtils.setupToolbar(this, R.id.toolbar)
 
-        // using toolbar as ActionBar
-        setSupportActionBar(toolbar)
+        // Get the Intent that started this activity and extract the string
+        val token = intent.getStringExtra(EXTRA_MESSAGE)
 
-        // Display application icon in the toolbar
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-        supportActionBar!!.setLogo(R.drawable.sambax_logo_1_24)
-        supportActionBar!!.setDisplayUseLogoEnabled(true)
+        //let us activate the bottom navigation menu
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationViewMyLoanPaymentsActivity)
 
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            NavigationBarUtils.handleNavigationBarItemClick(this, menuItem, token)
+        }
         //let us initialize variables
         val recyclerview_loan_payments = findViewById<RecyclerView>(R.id.recyclerview_loan_payments)
         recyclerview_loan_payments.setHasFixedSize(true)
@@ -45,8 +51,9 @@ class MyLoanPaymentsActivity : AppCompatActivity() {
         recyclerview_loan_payments.layoutManager = linearLayoutManager
 
 
-        // Get the Intent that started this activity and extract the string
-        val token = intent.getStringExtra(EXTRA_MESSAGE)
+
+
+
 
         val response = ServiceBuilder.buildService(ApiInterfaceMyLoanPayments::class.java)
         response.sendReq("Bearer " + token).enqueue(
@@ -101,5 +108,18 @@ class MyLoanPaymentsActivity : AppCompatActivity() {
 
             }
         )
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Get the Intent that started this activity and extract the string
+        val token = intent.getStringExtra(EXTRA_MESSAGE)
+        // Handle action bar item clicks here.
+        ActionBarUtils.handleActionBarItemClick(this, item, token)
+
+        return super.onOptionsItemSelected(item)
+
     }
 }

@@ -1,63 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/layout_root"
     android:background="@color/colorPrimaryBackground"
     tools:context=".activities.GroupStatementActivity">
 
-    <!-- ToolBar widget -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <ScrollView
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewGroupStatementActivity"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <!-- ToolBar widget -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0F9D58"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title=" Sambax"
+                app:titleTextColor="#ffff" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Group Statement"
+                android:id="@+id/tvGroupStatementIntroduce"
+                android:layout_below="@+id/toolbar"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorFormBackground"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/tvNoGroupStatement"
+                android:layout_below="@+id/tvGroupStatementIntroduce"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/red"
+
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvNoGroupStatement"
+                android:layout_marginTop="20dp"
+                android:id="@+id/recyclerview_show_group_statement"/>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+    <!-- Task bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewGroupStatementActivity"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#0F9D58"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+        android:background="@color/white"
+        app:itemTextColor="@color/black"
+        app:itemIconTint="@color/black"
+
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title=" Sambax"
-        app:titleTextColor="#ffff" />
+        app:menu="@menu/bottom_navigation_menu"
+        android:textColor="@color/black"
+        app:labelVisibilityMode="labeled"/>
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Group Statement"
-        android:id="@+id/tvGroupStatementIntroduce"
-        android:layout_below="@+id/toolbar"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/colorFormBackground"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-
-        />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:id="@+id/tvNoGroupStatement"
-        android:layout_below="@+id/tvGroupStatementIntroduce"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/red"
-
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvNoGroupStatement"
-        android:layout_marginTop="20dp"
-        android:id="@+id/recyclerview_show_group_statement"/>
-
-
-
-
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

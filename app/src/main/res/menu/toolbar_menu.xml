@@ -1,0 +1,44 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <!-- Add more items if needed -->
+    <item
+        android:id="@+id/action_about"
+        android:title="About Sambax"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_terms"
+        android:title="Terms and Conditions"
+        app:showAsAction="never"/>
+    <!-- Add other menu items here -->
+    <item
+        android:id="@+id/action_user_guide"
+        android:title="User Guide and FAQs"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_contact_us"
+        android:title="Contact Us"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_fix_funds"
+        android:title="Fix Funds"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_financial_literacy"
+        android:title="Financial Literacy"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_delete_account"
+        android:title="Delete Account"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_log_out"
+        android:title="Log Out"
+        app:showAsAction="never"/>
+
+    <!-- Add more items if needed -->
+</menu>

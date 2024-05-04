@@ -10,7 +10,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewWalletActivity"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,6 +32,22 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:title=" Sambax"
                 app:titleTextColor="#ffff" />
+
+            <TextView
+                android:id="@+id/textCustomerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:text=""
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/colorFormBackground"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                android:layout_gravity="center"
+
+                />
 
             <TextView
                 android:id="@+id/textWelcome"
@@ -88,8 +106,6 @@
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
                     android:text=" Exchange"
                     />
-
-
 
             </LinearLayout>
 
@@ -173,15 +189,7 @@
                                     android:background="@drawable/rounded_corner"
                                     android:textColor="@color/colorPrimaryBackground"
                                     android:layout_marginLeft="5dp"/>
-                                <Button
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/btn_ugx_fix"
-                                    android:layout_marginTop="5dp"
-                                    android:text="Fix Funds"
-                                    android:background="@drawable/rounded_corner"
-                                    android:textColor="@color/colorPrimaryBackground"
-                                    android:layout_marginLeft="5dp"/>
+
 
                             </LinearLayout>
 
@@ -229,8 +237,6 @@
 
                         </LinearLayout>
 
-
-
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="match_parent"
@@ -274,8 +280,6 @@
                                     android:background="@drawable/rounded_corner"
                                     android:textColor="@color/colorPrimaryBackground"
                                     />
-
-
 
                             </LinearLayout>
 
@@ -366,8 +370,6 @@
                                     android:background="@drawable/rounded_corner"
                                     android:textColor="@color/colorPrimaryBackground"
                                     />
-
-
 
                             </LinearLayout>
 
@@ -481,7 +483,6 @@
                 app:cardElevation="8dp"
                 android:layout_margin="8dp"
                 >
-
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
@@ -535,7 +536,6 @@
                                 android:text="United Arab Emirates Dirham"
                                 />
 
-
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -552,8 +552,6 @@
                                     android:textColor="@color/colorPrimaryBackground"
                                     />
 
-
-
                             </LinearLayout>
 
                         </LinearLayout>
@@ -563,7 +561,6 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-
 
             <TextView
                 android:id="@+id/tvResponse"
@@ -580,11 +577,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pick_national_id_button"/>
 
-
-
-
-
         </LinearLayout>
     </ScrollView>
+    <!-- Task bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewWalletActivity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:itemTextColor="@color/black"
+        app:itemIconTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu"
+        android:textColor="@color/black"
+        app:labelVisibilityMode="labeled"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

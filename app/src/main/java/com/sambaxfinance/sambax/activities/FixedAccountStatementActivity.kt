@@ -2,12 +2,15 @@ package com.sambaxfinance.sambax.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sambaxfinance.sambax.R
 import com.sambaxfinance.sambax.api.ApiInterfaceFDAStatement
 import com.sambaxfinance.sambax.api.ApiInterfaceStatement
@@ -27,16 +30,18 @@ class FixedAccountStatementActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fixed_account_statement)
 
-        // assigning ID of the toolbar to a variable
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        // Get the Intent that started this activity and extract the string
+        val token = intent.getStringExtra(EXTRA_MESSAGE)
 
-        // using toolbar as ActionBar
-        setSupportActionBar(toolbar)
+        // Call the setupToolbar function with the appropriate toolbar ID
+        ToolbarUtils.setupToolbar(this, R.id.toolbar)
 
-        // Display application icon in the toolbar
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-        supportActionBar!!.setLogo(R.drawable.sambax_logo_1_24)
-        supportActionBar!!.setDisplayUseLogoEnabled(true)
+        //let us activate the bottom navigation menu
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationViewFixedAccountStatementActivity)
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            NavigationBarUtils.handleNavigationBarItemClick(this, menuItem, token)
+        }
 
         //let us initialize variables
         val recyclerview_statement = findViewById<RecyclerView>(R.id.recyclerview_fda_statement)
@@ -47,7 +52,7 @@ class FixedAccountStatementActivity : AppCompatActivity() {
 
 
         // Get the Intent that started this activity and extract the string
-        val token = intent.getStringExtra(EXTRA_MESSAGE)
+        //val token = intent.getStringExtra(EXTRA_MESSAGE)
 
         val response = ServiceBuilder.buildService(ApiInterfaceFDAStatement::class.java)
         response.sendReq("Bearer " + token).enqueue(
@@ -102,5 +107,18 @@ class FixedAccountStatementActivity : AppCompatActivity() {
 
             }
         )
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Get the Intent that started this activity and extract the string
+        val token = intent.getStringExtra(EXTRA_MESSAGE)
+        // Handle action bar item clicks here.
+        ActionBarUtils.handleActionBarItemClick(this, item, token)
+
+        return super.onOptionsItemSelected(item)
+
     }
 }

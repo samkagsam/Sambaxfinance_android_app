@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity() {
                                 text = ""
                             }
                             //start a new activity here
-                            val intent = Intent(this@MainActivity, NewLandingActivity::class.java).apply {
+                            val intent = Intent(this@MainActivity, WalletActivity::class.java).apply {
                                 putExtra(EXTRA_MESSAGE, token)
                             }
                             startActivity(intent)

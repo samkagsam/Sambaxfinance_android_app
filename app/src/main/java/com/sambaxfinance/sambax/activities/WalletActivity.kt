@@ -3,6 +3,8 @@ package com.sambaxfinance.sambax.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -15,37 +17,41 @@ import com.sambaxfinance.sambax.models.WalletResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class WalletActivity : AppCompatActivity() {
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wallet)
 
-        // assigning ID of the toolbar to a variable
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        // Get the Intent that started this activity and extract the string
+        val token = intent.getStringExtra(EXTRA_MESSAGE)
 
-        // using toolbar as ActionBar
-        setSupportActionBar(toolbar)
+        // Call the setupToolbar function with the appropriate toolbar ID
+        ToolbarUtils.setupToolbar(this, R.id.toolbar)
 
-        // Display application icon in the toolbar
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setLogo(R.drawable.sambax_logo_1_24)
-        supportActionBar?.setDisplayUseLogoEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true) // Adding hamburger icon
+        //let us activate the bottom navigation menu
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationViewWalletActivity)
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            NavigationBarUtils.handleNavigationBarItemClick(this, menuItem, token)
+        }
+
+
 
         //let us initiate all the buttons
         val transaction_history = findViewById<TextView>(R.id.transaction_history)
         val exchange_currency_view = findViewById<TextView>(R.id.exchange_currency_view)
         val btn_ugx_add_money = findViewById<Button>(R.id.btn_ugx_add_money)
         val btn_ugx_withdraw = findViewById<Button>(R.id.btn_ugx_withdraw)
-        val btn_ugx_fix = findViewById<Button>(R.id.btn_ugx_fix)
+
         val btn_usd_add_money = findViewById<Button>(R.id.btn_usd_add_money)
         val btn_sar_add_money = findViewById<Button>(R.id.btn_sar_add_money)
         val btn_qar_add_money = findViewById<Button>(R.id.btn_qar_add_money)
         val btn_aed_add_money = findViewById<Button>(R.id.btn_aed_add_money)
-
-        // Get the Intent that started this activity and extract the string
-        val token = intent.getStringExtra(EXTRA_MESSAGE)
 
 
         val response = ServiceBuilder.buildService(ApiInterfaceWallet::class.java)
@@ -59,17 +65,16 @@ class WalletActivity : AppCompatActivity() {
                     //println("we were successful")
                     //println(response.message().toString())
                     //println(response.body().toString())
-                    //println(response.body()?.first_name)
-                    //println(response.body()?.account_balance)
-                    //println(response.body()?.loan_balance)
-                    //val logintoken = response.body()?.access_token
+
                     val okResponse = response.message().toString()
 
                     //val ugx_balance = response.body()?.ugx_balance
-                    //val usd_balance = response.body()?.usd_balance
-                    //val sar_balance = response.body()?.sar_balance
-                    //val qar_balance = response.body()?.qar_balance
-                    //val aed_balance = response.body()?.aed_balance
+
+                    // Capture the layout's TextView and set the string as its text
+                    val tv_customer_name = findViewById<TextView>(R.id.textCustomerName).apply {
+                        text = "Hello "+ response.body()?.name
+                    }
+
 
                     // Capture the layout's TextView and set the string as its text
                     val tv_hello = findViewById<TextView>(R.id.ugx_balance).apply {
@@ -131,13 +136,7 @@ class WalletActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-        btn_ugx_fix.setOnClickListener {
-            //start a new activity here
-            val intent = Intent(this@WalletActivity, FixedAccountLandingActivity::class.java).apply {
-                putExtra(EXTRA_MESSAGE, token)
-            }
-            startActivity(intent)
-        }
+
         btn_usd_add_money.setOnClickListener {
             //start a new activity here
             val intent = Intent(this@WalletActivity, UsdAddMoneyByCardActivity::class.java).apply {
@@ -169,4 +168,19 @@ class WalletActivity : AppCompatActivity() {
 
 
     }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Get the Intent that started this activity and extract the string
+        val token = intent.getStringExtra(EXTRA_MESSAGE)
+        // Handle action bar item clicks here.
+        ActionBarUtils.handleActionBarItemClick(this, item, token)
+
+        return super.onOptionsItemSelected(item)
+
+    }
+
+
 }
