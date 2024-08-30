@@ -13,7 +13,7 @@ object ServiceBuilder {
         .build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://sambax-api.herokuapp.com/") // change this IP for testing by your actual machine IP
+        .baseUrl("https://sambaxapi.com/") // change this IP for testing by your actual machine IP
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()

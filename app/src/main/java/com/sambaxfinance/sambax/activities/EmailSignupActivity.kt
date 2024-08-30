@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.hbb20.CountryCodePicker
 import com.sambaxfinance.sambax.R
 import com.sambaxfinance.sambax.api.ApiInterface
@@ -38,6 +35,9 @@ class EmailSignupActivity : AppCompatActivity() {
 
         val countryCodePicker = findViewById<CountryCodePicker>(R.id.countryCodePicker)
 
+        // Assuming you have initialized your spinners in your Activity or Fragment
+        val spinnerSex: Spinner = findViewById(R.id.spinnerSex)
+
 
         buttonSignUp.setOnClickListener {
             if (!isButtonEnabled) {
@@ -53,6 +53,10 @@ class EmailSignupActivity : AppCompatActivity() {
                 isButtonEnabled = true
                 buttonSignUp.isEnabled = true
             }, 30000) // 30 seconds in milliseconds
+
+            // Get the selected item from the "Sex" spinner
+            val sex: String = spinnerSex.selectedItem as String
+
 
             // Move the retrieval of selectedCountryName and selectedCountryCode here
             val selectedCountryName: String = countryCodePicker.selectedCountryName
@@ -108,7 +112,7 @@ class EmailSignupActivity : AppCompatActivity() {
             println(selectedCountryCode)
 
             //DummyModel
-            val requestModel = RequestModel(first_name_fresh,last_name_fresh,phone_number_fresh,email_fresh,password_fresh, selectedCountryName, selectedCountryCode
+            val requestModel = RequestModel(first_name_fresh,last_name_fresh,phone_number_fresh,email_fresh,password_fresh, selectedCountryName, selectedCountryCode, sex
             )
 
             val response = ServiceBuilder.buildService(ApiInterface::class.java)

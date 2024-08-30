@@ -42,8 +42,6 @@ class UserSignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_sign_up)
 
 
-
-
         val buttonSignUp = findViewById<Button>(R.id.buttonSignUp)
         val first_name_given = findViewById<EditText>(R.id.etFirstName)
         val last_name_given = findViewById<EditText>(R.id.etLastName)
@@ -51,6 +49,9 @@ class UserSignUpActivity : AppCompatActivity() {
         val phone_number_given = findViewById<EditText>(R.id.etPhoneNumber2)
 
         val countryCodePicker = findViewById<CountryCodePicker>(R.id.countryCodePicker)
+
+        // Assuming you have initialized your spinners in your Activity or Fragment
+        val spinnerSex: Spinner = findViewById(R.id.spinnerSex)
 
 
         buttonSignUp.setOnClickListener {
@@ -67,6 +68,9 @@ class UserSignUpActivity : AppCompatActivity() {
                 isButtonEnabled = true
                 buttonSignUp.isEnabled = true
             }, 30000) // 30 seconds in milliseconds
+
+            // Get the selected item from the "Sex" spinner
+            val sex: String = spinnerSex.selectedItem as String
 
             // Move the retrieval of selectedCountryName and selectedCountryCode here
             val selectedCountryName: String = countryCodePicker.selectedCountryName
@@ -121,7 +125,7 @@ class UserSignUpActivity : AppCompatActivity() {
             println(selectedCountryCode)
 
             //DummyModel
-            val requestModel = RequestModel(first_name_fresh,last_name_fresh,phone_number_fresh,email_fresh,password_fresh, selectedCountryName, selectedCountryCode
+            val requestModel = RequestModel(first_name_fresh,last_name_fresh,phone_number_fresh,email_fresh,password_fresh, selectedCountryName, selectedCountryCode, sex
                 )
 
             val response = ServiceBuilder.buildService(ApiInterface::class.java)

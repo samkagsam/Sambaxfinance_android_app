@@ -13,5 +13,11 @@
         <item>Mobile Money</item>
 
     </string-array>
+
+    <string-array name="sex_array">
+        <item>male</item>
+        <item>female</item>
+
+    </string-array>
 </resources>
 
