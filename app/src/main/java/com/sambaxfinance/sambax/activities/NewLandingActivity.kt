@@ -223,24 +223,8 @@ class NewLandingActivity : AppCompatActivity() {
 
                     true
                 }
-                R.id.action_five -> {
-                    //start a new activity here
-                    val intent = Intent(this@NewLandingActivity, MyLoanApplicationsActivity::class.java).apply {
-                        putExtra(EXTRA_MESSAGE, token)
-                    }
-                    startActivity(intent)
 
-                    true
-                }
-                R.id.action_six -> {
-                    //start a new activity here
-                    val intent = Intent(this@NewLandingActivity, CalculatorActivity::class.java).apply {
-                        putExtra(EXTRA_MESSAGE, token)
-                    }
-                    startActivity(intent)
 
-                    true
-                }
                 R.id.action_seven -> {
                     //start a new activity here
                     val intent = Intent(this@NewLandingActivity, BlogActivity::class.java).apply {

@@ -29,13 +29,7 @@ object NavigationBarUtils {
                 activity.startActivity(intent)
                 true
             }
-            R.id.menu_groups -> {
-                val intent = Intent(activity, GroupTypeActivity::class.java).apply {
-                    putExtra(EXTRA_MESSAGE, token)
-                }
-                activity.startActivity(intent)
-                true
-            }
+
             else -> false
         }
     }

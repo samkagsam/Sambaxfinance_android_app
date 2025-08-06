@@ -32,12 +32,7 @@ object ActionBarUtils {
                 }
                 activity.startActivity(intent)
             }
-            R.id.action_fix_funds -> {
-                val intent = Intent(activity, FixedAccountLandingActivity::class.java).apply {
-                    putExtra(EXTRA_MESSAGE, token)
-                }
-                activity.startActivity(intent)
-            }
+
             R.id.action_financial_literacy -> {
                 val intent = Intent(activity, BlogActivity::class.java).apply {
                     putExtra(EXTRA_MESSAGE, token)

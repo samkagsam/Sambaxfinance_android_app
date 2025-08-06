@@ -13,8 +13,10 @@ import androidx.appcompat.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sambaxfinance.sambax.R
 import com.sambaxfinance.sambax.api.ApiInterfaceLandingPage
+import com.sambaxfinance.sambax.api.ApiInterfaceLoans
 import com.sambaxfinance.sambax.api.ServiceBuilder
 import com.sambaxfinance.sambax.models.LandingPageResponseModel
+import com.sambaxfinance.sambax.models.LoansResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,15 +44,15 @@ class LoansActivity : AppCompatActivity() {
 
         //let us initiate all the buttons
         val button_apply_for_loan = findViewById<Button>(R.id.button_apply_for_loan)
-        val button_go_to_pay_loan = findViewById<Button>(R.id.button_go_to_pay_loan)
-        val button_loan_statement = findViewById<Button>(R.id.button_loan_statement)
+        val button_go_to_see_loans = findViewById<Button>(R.id.button_go_to_see_loans)
+        //val button_loan_statement = findViewById<Button>(R.id.button_loan_statement)
 
-        val response = ServiceBuilder.buildService(ApiInterfaceLandingPage::class.java)
+        val response = ServiceBuilder.buildService(ApiInterfaceLoans::class.java)
         response.sendReq("Bearer " + token).enqueue(
-            object : Callback<LandingPageResponseModel> {
+            object : Callback<LoansResponseModel> {
                 override fun onResponse(
-                    call: Call<LandingPageResponseModel>,
-                    response: Response<LandingPageResponseModel>
+                    call: Call<LoansResponseModel>,
+                    response: Response<LoansResponseModel>
                 ) {
                     Toast.makeText(this@LoansActivity,response.message().toString(), Toast.LENGTH_LONG).show()
                     //println("we were successful")
@@ -65,11 +67,11 @@ class LoansActivity : AppCompatActivity() {
 
                     // Capture the layout's TextView and set the string as its text
                     val tv_loan_balance = findViewById<TextView>(R.id.tv_loan_balance).apply {
-                        text = "Loan Balance: UGX "+ response.body()?.loan_balance
+                        text = "Active Loans with Sambax: "+ response.body()?.number_of_active_loans
                     }
                 }
 
-                override fun onFailure(call: Call<LandingPageResponseModel>, t: Throwable) {
+                override fun onFailure(call: Call<LoansResponseModel>, t: Throwable) {
                     Toast.makeText(this@LoansActivity,t.toString(), Toast.LENGTH_LONG).show()
                     //println("we failed")
                     //println(t.toString())
@@ -84,13 +86,15 @@ class LoansActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-        button_go_to_pay_loan.setOnClickListener {
+        button_go_to_see_loans.setOnClickListener {
             //start a new activity here
-            val intent = Intent(this@LoansActivity, PayLoanActivity::class.java).apply {
+            val intent = Intent(this@LoansActivity, SeeLoansActivity::class.java).apply {
                 putExtra(EXTRA_MESSAGE, token)
             }
             startActivity(intent)
         }
+
+        /*
         button_loan_statement.setOnClickListener {
             //start a new activity here
             val intent = Intent(this@LoansActivity, MyLoanPaymentsActivity::class.java).apply {
@@ -98,6 +102,8 @@ class LoansActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+
+         */
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)

@@ -18,6 +18,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.LoanStatementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.SeeLoansActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.UgxWithdrawByMobileMoneyActivity"
             android:exported="false" />
         <activity

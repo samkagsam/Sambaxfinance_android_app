@@ -14,11 +14,7 @@
         android:icon="@drawable/send_icon_225"
         android:title="Send"
         android:textColor="@color/black"/>
-    <item
-        android:id="@+id/menu_groups"
-        android:icon="@drawable/team_icon"
-        android:title="Groups"
-        android:textColor="@color/black"/>
+
 
 
 

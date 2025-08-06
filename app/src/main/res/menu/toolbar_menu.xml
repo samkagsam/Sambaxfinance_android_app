@@ -22,13 +22,10 @@
         android:title="Contact Us"
         app:showAsAction="never"/>
 
-    <item
-        android:id="@+id/action_fix_funds"
-        android:title="Fix Funds"
-        app:showAsAction="never"/>
+
     <item
         android:id="@+id/action_financial_literacy"
-        android:title="Financial Literacy"
+        android:title="Blog"
         app:showAsAction="never"/>
 
     <item

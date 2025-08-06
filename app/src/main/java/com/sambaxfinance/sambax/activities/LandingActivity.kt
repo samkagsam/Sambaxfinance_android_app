@@ -303,24 +303,7 @@ class LandingActivity : AppCompatActivity() {
 
                     true
                 }
-                R.id.action_five -> {
-                    //start a new activity here
-                    val intent = Intent(this@LandingActivity, MyLoanApplicationsActivity::class.java).apply {
-                        putExtra(EXTRA_MESSAGE, token)
-                    }
-                    startActivity(intent)
 
-                    true
-                }
-                R.id.action_six -> {
-                    //start a new activity here
-                    val intent = Intent(this@LandingActivity, CalculatorActivity::class.java).apply {
-                        putExtra(EXTRA_MESSAGE, token)
-                    }
-                    startActivity(intent)
-
-                    true
-                }
                 R.id.action_seven -> {
                     //start a new activity here
                     val intent = Intent(this@LandingActivity, BlogActivity::class.java).apply {
